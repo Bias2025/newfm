@@ -1,0 +1,56 @@
+CONTEXT
+Domain: Financial Services - Freddie Mac Enterprise Environment
+Scale: Enterprise-grade with 10,000+ RPS, <100ms P99 latency
+Constraints: SOX compliance, FIPS 140-2 encryption, PCI DSS standards
+Team Composition: 50+ microservices, 200+ developers
+Integration Requirements: MongoDB, PostgreSQL, Kafka, ActiveMQ, Redis, S3, Apollo GraphQL
+
+REQUIREMENTS
+Functional:
+
+Consumer-driven contract testing between all microservices
+Automated contract verification in CI/CD pipeline
+Contract versioning and backward compatibility checks
+Real-time contract validation during development
+Non-Functional:
+
+98% test coverage minimum
+<5 second contract verification time
+Zero false positives in contract validation
+Support for REST, GraphQL, and async messaging contracts
+ARCHITECTURE
+Pattern: Hexagonal Architecture with Contract-First Design
+Deployment: Kubernetes on TSB Service Mesh (Istio)
+Layers:
+
+Contract Layer: PACT broker with versioning
+Application Layer: Spring Boot 3.2.x microservices
+Infrastructure Layer: MongoDB, PostgreSQL, Kafka, Redis
+FRAMEWORK
+Java 17 with Spring Boot 3.2.x
+PACT JVM 4.6.x for contract testing
+Cucumber 4.8 + RestAssured for integration
+JUnit 5 for unit testing
+Ping ID for authentication
+Nimbus for JWT validation
+TECHNOLOGY
+Docker containerization
+Kubernetes orchestration
+TSB/Istio service mesh
+Optimus logging framework
+ElasticCache-Redis for caching
+S3 for blob storage
+TESTING
+Unit Tests: 98% coverage with JUnit 5
+Contract Tests: PACT framework
+Integration Tests: Cucumber + RestAssured
+Performance Tests: JMeter/Gatling
+Security Scans: SonarQube + OWASP
+PERSONA
+Principal Engineer with 15+ years in financial services, expert in distributed systems and contract testing
+
+ORIGINALITY
+Automatic contract generation from OpenAPI specs
+Real-time contract drift detection
+GraphQL contract testing support
+Async messaging contract validation
