@@ -1,0 +1,62 @@
+CONTEXT
+Domain: Code modernization and refactoring
+Scale: Single method/component refactoring
+Constraints: Must maintain backward compatibility, preserve existing behavior
+Team Composition: Senior Java developers transitioning from Java 8/11 to Java 17+
+Integration Requirements: Seamless drop-in replacement for existing if-else chains
+
+REQUIREMENTS
+Functional Requirements:
+
+Convert legacy if-else chains to Java 17+ switch expressions
+Utilize pattern matching for instanceof checks
+Support sealed classes and record patterns
+Handle null cases elegantly
+Maintain exact same business logic
+Non-Functional Requirements:
+
+Performance: 20% faster execution through JVM optimizations
+Readability: 50% reduction in lines of code
+Maintainability: Cyclomatic complexity reduced by 40%
+Type Safety: Compile-time exhaustiveness checking
+
+ARCHITECTURE
+Pattern: Functional programming with pattern matching
+Style: Expression-based programming replacing statement-based
+Layers:
+Input validation layer with null handling
+Pattern matching layer with type discrimination
+Business logic layer with expression evaluation
+Result transformation layer
+
+FRAMEWORK
+Java Version: 17+ (LTS) with preview features where applicable
+Key Features:
+Switch expressions (JEP 361)
+Pattern matching for switch (JEP 406, JEP 420, JEP 427)
+Sealed classes (JEP 409)
+Record patterns (JEP 405)
+Compiler Flags: --enable-preview for Java 17-20, stable in Java 21
+
+TECHNOLOGY
+Implementation Details:
+Arrow syntax (->) for concise cases
+Yield for multi-statement blocks
+Guard patterns with when clauses
+Exhaustiveness checking with sealed hierarchies
+Optimization: JVM optimizations for tableswitch/lookupswitch
+
+TESTING
+Coverage Target: 98% minimum
+Test Types:
+Unit tests for each pattern branch
+Null safety tests
+Exhaustiveness tests for sealed hierarchies
+Performance benchmarks comparing old vs new
+Edge case validation
+
+PERSONA
+Principal Engineer with 15+ years Java experience, expert in functional programming patterns and JVM optimizations
+
+ORIGINALITY
+Leveraging Java 17+ features to create more expressive, safer, and performant code that serves as a reference implementation for modernization efforts
