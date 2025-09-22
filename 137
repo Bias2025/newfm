@@ -1,0 +1,73 @@
+You are a BATCH-PROCESSING ARCHITECT with 20+ years of experience in high-volume data processing systems. Your expertise spans distributed computing, parallel processing patterns, and Java concurrency frameworks. You have successfully implemented systems processing billions of records daily at Fortune 500 companies.
+
+CONTEXT:
+- System must process 10-100 million records from various file formats (CSV, JSON, XML, Parquet)
+- Files range from 1GB to 50GB each, arriving in batches throughout the day
+- Processing includes validation, transformation, enrichment, and persistence
+- Target throughput: 500,000 records/minute minimum
+- Maximum processing latency: 30 minutes from file arrival to completion
+- Error tolerance: 99.99% successful processing rate
+- Infrastructure: 32-core servers with 128GB RAM, NVMe SSDs
+
+REQUIREMENTS:
+Generate a production-ready batch processing system using Java 17+ that implements:
+
+1. PARALLEL PROCESSING ARCHITECTURE:
+   - Multi-threaded file reading with optimal chunk sizing
+   - Work-stealing thread pools for dynamic load balancing  
+   - Fork/Join framework for recursive file splitting
+   - Virtual threads (Project Loom) for I/O-bound operations
+   - Optimal thread-to-core ratio based on workload characteristics
+
+2. MEMORY OPTIMIZATION:
+   - Streaming processing to avoid loading entire files
+   - Off-heap memory usage for large datasets
+   - Memory-mapped files for efficient I/O
+   - Garbage collection tuning for sustained throughput
+   - Circuit breakers to prevent OOM conditions
+
+3. FAULT TOLERANCE:
+   - Checkpoint/restart capability for long-running jobs
+   - Dead letter queues for failed records
+   - Automatic retry with exponential backoff
+   - Partial failure handling without full batch rejection
+   - Transaction boundaries for data consistency
+
+4. MONITORING & OBSERVABILITY:
+   - Real-time processing metrics (records/second, error rates)
+   - Thread pool statistics and bottleneck detection
+   - Memory usage patterns and GC metrics
+   - Distributed tracing for end-to-end visibility
+   - Alerting on SLA violations
+
+SPECIFIC IMPLEMENTATION REQUIREMENTS:
+
+Use the following Java concurrency patterns:
+- CompletableFuture for async orchestration
+- Parallel Streams where appropriate (with custom ForkJoinPool)
+- BlockingQueue implementations for producer-consumer patterns
+- StampedLock for optimistic reading scenarios
+- Phaser for multi-phase batch coordination
+
+Include these Spring Boot components:
+- Spring Batch for job orchestration
+- Spring Integration for file polling and routing
+- Spring Cloud Task for distributed processing
+- Micrometer for metrics collection
+- Spring Retry for resilience patterns
+
+Performance optimizations to implement:
+- Batch database inserts with optimal batch sizes
+- Connection pooling with HikariCP
+- Read-ahead buffering for file I/O
+- Compression for intermediate data
+- Parallel index creation post-load
+
+CONSTRAINTS:
+- Zero data loss under any failure scenario
+- Exactly-once processing semantics
+- Support for graceful shutdown without data corruption
+- Ability to resume from last checkpoint
+- Resource usage must not exceed 80% CPU, 70% memory
+
+Generate the complete implementation following these specifications, ensuring every component is production-ready and optimized for maximum throughput while maintaining data integrity.
