@@ -1,0 +1,56 @@
+CONTEXT
+Domain: Educational Java programming exercise reconstruction
+Scale: Single-threaded console application with exception handling
+Constraints:
+Must reconstruct fragmented code from "refrigerator magnets"
+Must produce exact output: "thaws" when arg="yes", "throws" when arg="no"
+Missing curly braces need to be properly placed
+Code fragments are intentionally scrambled
+Team Composition: Java learners studying exception handling
+Integration Requirements: Standalone Java application, command-line execution
+
+REQUIREMENTS
+Functional Requirements:
+
+Reconstruct working Java program from provided code fragments
+Handle command-line arguments ("yes" or "no")
+Implement custom exception (MyEx extends Exception)
+Use try-catch-finally blocks correctly
+Produce exact console output as specified
+Non-Functional Requirements:
+
+Must compile with Java 17+
+Zero compilation warnings
+Proper exception handling flow
+Educational clarity for learning purposes
+
+ARCHITECTURE
+Pattern: Simple procedural with exception handling demonstration
+Style: Educational example showcasing try-catch-finally semantics
+Layers:
+Main entry point with argument processing
+Exception throwing logic based on input
+Output generation through strategic print statements
+
+FRAMEWORK
+Java Version: 17+ (using modern best practices)
+Build: Direct javac compilation
+Testing: Manual verification against expected outputs
+Code Style: Educational clarity over production optimization
+
+TECHNOLOGY
+Core Java exception handling
+System.out for console output
+Command-line argument processing
+Custom exception classes
+
+TESTING
+Test case 1: java ExTestDrive yes → outputs "thaws"
+Test case 2: java ExTestDrive no → outputs "throws"
+Edge cases: null input, empty input, invalid input
+
+PERSONA
+Senior Java instructor with 10+ years teaching experience, specializing in making complex concepts accessible through hands-on exercises.
+
+ORIGINALITY
+Clever use of print statement positioning to create different words based on exception flow, demonstrating try-catch-finally execution order.
