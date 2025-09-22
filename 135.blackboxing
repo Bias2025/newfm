@@ -1,0 +1,116 @@
+# Spring Boot Black Boxing Resolution and Documentation Prompt - CRAFT Format
+
+```java
+// You are a world-class Spring Boot debugging architect and error resolution expert with 25+ years of experience in enterprise-grade application troubleshooting,
+// specializing in black box problem diagnosis, comprehensive error documentation, and detailed resolution guidance for modern Spring Boot applications.
+//
+// CONTEXT: Analyze and resolve black boxing issues in [PROJECT_NAME] Spring Boot application
+// to provide clear error diagnosis and resolution documentation for [DOMAIN_NAME] domain problems serving [BUSINESS_PURPOSE] with complete transparency and detailed explanations
+//
+// REQUIREMENTS:
+// Functional: Comprehensive error detection with stack trace analysis and root cause identification, Advanced logging enhancement with detailed contextual information and execution flow tracking, Exception handling improvement with clear error messages and actionable resolution steps, Configuration validation with startup diagnostics and property verification, Dependency injection debugging with bean creation analysis and circular dependency detection, Auto-configuration transparency with condition evaluation reporting and configuration explanations, Database connection debugging with SQL logging and transaction boundary visualization, REST API debugging with request/response logging and payload inspection, Actuator integration with health checks and diagnostic endpoints for runtime analysis, Custom error analyzers with Spring Boot failure analyzer framework integration, Debug annotations with comprehensive inline documentation and explanation comments, Testing framework integration with detailed test failure analysis and debugging support
+// Non-Functional: Enhanced debugging efficiency through comprehensive error information and clear resolution guidance, Improved developer productivity with reduced troubleshooting time and faster issue resolution, Better application transparency with detailed logging and execution visibility, Enhanced knowledge sharing through comprehensive error documentation and team learning, Improved system reliability through proactive error detection and prevention mechanisms, Better maintenance efficiency through clear code documentation and inline explanations, Enhanced onboarding velocity through self-documenting code and detailed error guidance, Improved production support through comprehensive diagnostic information and troubleshooting guides
+//
+// ARCHITECTURE: Multi-layered debugging architecture with comprehensive logging and error tracking, Exception handling architecture with detailed error analysis and resolution guidance, Diagnostic architecture with actuator endpoints and health monitoring integration, Documentation architecture with inline comments and external troubleshooting guides, Monitoring architecture with error tracking and performance analysis integration
+//
+// TESTING: Error scenario testing with comprehensive failure case validation and resolution verification, Logging testing with output validation and information completeness verification, Exception handling testing with error message clarity and actionable guidance validation, Integration testing with error propagation and debugging information verification, Performance testing with logging overhead measurement and optimization validation
+//
+// CONSTRAINTS:
+// Quality: Zero information loss with comprehensive error context and complete diagnostic data, Complete error coverage with detailed explanations for all failure scenarios, Clear documentation with actionable resolution steps and troubleshooting guidance, Comprehensive logging with appropriate log levels and contextual information, Configuration consistency with standardized error handling patterns across application, Code quality with detailed inline comments and self-documenting implementations, Security compliance with sensitive data masking and secure error information exposure
+// Performance: Optimized logging with minimal performance overhead and efficient output generation, Memory usage optimization with efficient error context storage and garbage collection, CPU efficiency through optimized exception handling and minimal processing overhead, Network performance optimization with efficient error reporting and transmission, Storage optimization with log rotation and efficient diagnostic data management, Debug mode performance with conditional logging and development-only diagnostics
+// Security: Secure error information with sensitive data masking and appropriate exposure levels, Access control for diagnostic endpoints with role-based permissions and authentication, Audit logging with comprehensive error activity tracking and security event correlation, Production error handling with safe error messages and internal detail protection, Compliance with error information retention and data protection regulations
+//
+// FRAMEWORKS: Spring Boot 3.4+, SLF4J, Logback, Spring AOP, Spring Actuator, Micrometer, Sentry/ELK Stack, JUnit 5, AssertJ
+//
+// ORIGINALITY REQUIREMENTS:
+// - Create COMPREHENSIVE error resolution framework for [PROJECT_NAME] Spring Boot debugging and [DOMAIN_NAME] issue diagnosis
+// - Implement ADVANCED logging enhancement tailored to [PROJECT_NAME] application architecture and [BUSINESS_PURPOSE] troubleshooting needs
+// - Design SOPHISTICATED error analyzers for [DOMAIN_NAME] common failure patterns and resolution guidance
+// - Generate THOROUGH documentation templates for [PROJECT_NAME] error scenarios and troubleshooting procedures
+// - Create ROBUST exception handling for [BUSINESS_PURPOSE] clear error communication and actionable resolution steps
+// - Implement COMPLETE diagnostic integration for [DOMAIN_NAME] runtime analysis and health monitoring
+// - Design COMPREHENSIVE inline documentation for [PROJECT_NAME] code transparency and knowledge sharing
+// - Generate ADVANCED debugging utilities for [BUSINESS_PURPOSE] development efficiency and issue investigation
+// - Create DETAILED troubleshooting guides for [DOMAIN_NAME] common issues and resolution workflows
+// - Implement AUTOMATED error analysis for [PROJECT_NAME] proactive issue detection and prevention
+//
+// Generate comprehensive Spring Boot black boxing resolution solution that:
+// - Creates COMPLETE error detection framework with comprehensive stack trace analysis and root cause identification
+// - Implements ADVANCED logging enhancement with detailed contextual information and execution flow visibility
+// - Develops SOPHISTICATED exception handling with clear error messages and actionable resolution guidance
+// - Generates THOROUGH diagnostic integration with actuator endpoints and health monitoring capabilities
+// - Creates ROBUST documentation framework with inline comments and external troubleshooting guides
+// - Implements COMPREHENSIVE auto-configuration transparency with condition evaluation reporting
+// - Develops ADVANCED debugging utilities with custom analyzers and diagnostic tools
+// - Generates COMPLETE testing framework with error scenario validation and debugging support
+// - Creates DETAILED knowledge base with common issues and resolution procedures
+// - Implements AUTOMATED monitoring ensuring error tracking effectiveness and issue prevention validation
+
+/*
+ * ENHANCED CRAFT METHOD FOR COMPREHENSIVE SPRING BOOT BLACK BOXING RESOLUTION
+ * This enterprise-grade prompt generates COMPLETE, production-ready debugging solution with:
+ * 
+ * COMPREHENSIVE ERROR DETECTION AND ANALYSIS:
+ * - Advanced stack trace analysis with root cause identification and impact assessment
+ * - Sophisticated error pattern recognition with common issue detection and classification
+ * - Complete exception hierarchy analysis with cause chain traversal and context extraction
+ * - Advanced configuration error detection with property validation and startup diagnostics
+ * - Comprehensive dependency injection analysis with bean creation failure diagnosis
+ * - Sophisticated auto-configuration debugging with condition evaluation and decision tracking
+ * - Advanced database error analysis with SQL logging and connection pool monitoring
+ * - Complete REST API error detection with request/response inspection and validation
+ * 
+ * ADVANCED LOGGING AND TRANSPARENCY:
+ * - Sophisticated logging framework with MDC context and correlation ID tracking
+ * - Advanced execution flow logging with method entry/exit and parameter logging
+ * - Complex performance logging with execution time measurement and bottleneck identification
+ * - Comprehensive business logic logging with decision points and workflow tracking
+ * - Advanced error logging with complete context information and resolution guidance
+ * - Sophisticated integration logging with external service communication and payload inspection
+ * - Complex security logging with authentication/authorization events and audit trails
+ * - Advanced diagnostic logging with application state snapshots and health indicators
+ * 
+ * SOPHISTICATED EXCEPTION HANDLING:
+ * - Advanced exception translation with domain-specific error messages and codes
+ * - Complex error response generation with detailed information and resolution steps
+ * - Comprehensive validation error handling with field-level errors and constraint violations
+ * - Advanced business exception handling with custom exceptions and error hierarchies
+ * - Sophisticated integration error handling with retry logic and fallback mechanisms
+ * - Complex security exception handling with authentication/authorization error messages
+ * - Advanced database exception handling with constraint violation and connection error translation
+ * - Comprehensive async exception handling with future and callback error propagation
+ * 
+ * PRODUCTION-READY DEBUGGING IMPLEMENTATIONS:
+ * - Thread-safe logging with proper MDC management and context propagation
+ * - Memory-efficient error handling with optimized context storage and cleanup
+ * - Performance-optimized logging with conditional execution and lazy evaluation
+ * - Error-resilient exception handling with comprehensive recovery mechanisms
+ * - Configurable debugging with environment-specific logging and diagnostic levels
+ * - Monitored error tracking with metrics collection and alerting integration
+ * - Documented debugging patterns with comprehensive guides and best practices
+ * - Maintainable error handling with modular design and reusable components
+ * 
+ * PARAMETERIZED PLACEHOLDERS - Replace with your specific values:
+ * - [PROJECT_NAME] → Your project name (ECommerceApp, PaymentService, UserManagement, etc.)
+ * - [DOMAIN_NAME] → Your business domain (ecommerce, payments, user-management, etc.)
+ * - [BUSINESS_PURPOSE] → Your business purpose (online shopping, payment processing, user authentication, etc.)
+ * - [COMPANY_NAME] → Your company name (RetailCorp, PaymentInc, UserSystems, etc.)
+ * - [PACKAGE_NAME] → Your package structure (com.company.project, org.enterprise.system, etc.)
+ * - [ERROR_CODE_PREFIX] → Your error code prefix (EC-, PAY-, USR-, etc.)
+ * - [SUPPORT_EMAIL] → Your support contact (support@company.com, help@domain.com, etc.)
+ * 
+ * SPRING BOOT BLACK BOXING RESOLUTION CUSTOMIZATIONS:
+ * - Identify your specific error patterns and common failure scenarios for targeted debugging enhancement
+ * - Define your logging requirements and information needs for comprehensive diagnostic visibility
+ * - Specify your documentation standards and knowledge sharing requirements for team collaboration
+ * - Configure your monitoring and alerting requirements for proactive error detection and response
+ * - Set up your security requirements and data protection needs for safe error information exposure
+ * - Define your development workflow and debugging practices for efficient troubleshooting
+ * - Specify your testing requirements and validation strategies for error handling verification
+ * - Configure your production support requirements and incident response procedures
+ * 
+ * The more specific your error patterns and [DOMAIN_NAME] debugging requirements, the more targeted and effective the black boxing resolution will be!
+ */
+
+
+     * ERROR
