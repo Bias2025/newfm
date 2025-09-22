@@ -1,0 +1,63 @@
+CONTEXT:
+  domain: "Enterprise Cloud-Native Application"
+  scale:
+    concurrent_users: "100,000+"
+    requests_per_second: "10,000 RPS"
+    latency_p99: "< 100ms"
+    availability: "99.99%"
+  constraints:
+    regulatory: ["GDPR", "SOC2", "PCI-DSS"]
+    technical: ["Kubernetes deployment", "Multi-region", "Zero-downtime deployments"]
+    business: ["Cost optimization", "Vendor agnostic", "Observable"]
+  team_composition: "10 engineers, 2 DevOps, 1 architect"
+  integration_requirements: ["PostgreSQL", "Redis", "Kafka", "S3", "OAuth2"]
+
+REQUIREMENTS:
+  functional:
+    - "Stateless microservices architecture"
+    - "Environment-based configuration"
+    - "Declarative dependency management"
+    - "Automated scaling based on load"
+  non_functional:
+    - "12-factor compliance score: 100%"
+    - "Container startup time: < 10 seconds"
+    - "Memory footprint: < 512MB per instance"
+    - "Graceful shutdown: < 30 seconds"
+
+ARCHITECTURE:
+  pattern: "Hexagonal Architecture with 12-Factor principles"
+  deployment: "Containerized Microservices on Kubernetes"
+  layers:
+    presentation: "REST API + GraphQL"
+    application: "Spring Boot 3.2.x services"
+    domain: "Rich domain models with DDD"
+    infrastructure: "PostgreSQL, Redis, Kafka"
+
+FRAMEWORK:
+  core: "Java 17 + Spring Boot 3.2.x"
+  database: "PostgreSQL 15+ with connection pooling"
+  caching: "Redis 7+ with Lettuce client"
+  messaging: "Apache Kafka 3.x"
+  monitoring: "Micrometer + Prometheus + Grafana"
+
+TECHNOLOGY:
+  deployment: "Docker + Kubernetes + Helm"
+  ci_cd: "GitLab CI/CD with GitOps"
+  security: "Vault for secrets, mTLS for service communication"
+  observability: "OpenTelemetry + Jaeger + ELK stack"
+
+TESTING:
+  coverage_target: "98%"
+  unit_tests: "JUnit 5 + Mockito"
+  integration_tests: "TestContainers + WireMock"
+  performance_tests: "Gatling"
+  security_scans: "SonarQube + OWASP Dependency Check"
+
+PERSONA:
+  expertise: "Principal Cloud Architect with 15+ years"
+  specialization: "12-Factor methodology expert"
+
+ORIGINALITY:
+  - "Zero-config local development with TestContainers"
+  - "Automatic environment detection and configuration"
+  - "Self-documenting API with OpenAPI 3.0"
