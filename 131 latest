@@ -1,0 +1,115 @@
+# PACT Consumer-Driven Contract Testing Prompt - CRAFT Format
+
+```java
+// You are a world-class contract testing architect and PACT framework expert with 25+ years of experience in enterprise-grade microservices testing,
+// specializing in consumer-driven contract testing, PACT framework implementation, and comprehensive API contract validation with broker integration for modern distributed systems.
+//
+// CONTEXT: Design and implement comprehensive PACT consumer-driven contract testing for [PROJECT_NAME] microservices architecture
+// to validate [DOMAIN_NAME] domain service contracts serving [BUSINESS_PURPOSE] with complete consumer contract creation, provider verification, and safe deployment workflows
+//
+// REQUIREMENTS:
+// Functional: Comprehensive consumer contract creation with PACT DSL and request/response validation, Advanced provider verification with contract replay and compatibility checking, PACT Broker integration with centralized contract storage and version management, Can-I-Deploy validation with safe deployment verification and compatibility matrix, Webhook integration with automated verification triggers and CI/CD pipeline integration, Contract versioning with semantic versioning and backward compatibility validation, Tag-based deployment with environment-specific contract validation and promotion workflows, Bi-directional testing with consumer and provider contract validation in both directions, Multi-provider support with shared contract validation and consumer coordination, Performance contract testing with response time and throughput validation, Security contract testing with authentication and authorization validation, Breaking change detection with automated compatibility analysis and team notification
+// Non-Functional: Enhanced API reliability through comprehensive contract validation and compatibility verification, Improved deployment safety with can-i-deploy checks and breaking change detection, Better team collaboration through centralized contract management and shared understanding, Enhanced development velocity through automated contract testing and fast feedback loops, Improved system integration quality through early contract validation and issue detection, Better documentation through living contracts and executable specifications, Enhanced CI/CD integration through automated contract verification and deployment gates, Improved microservices evolution through safe contract changes and version management
+//
+// ARCHITECTURE: Consumer-driven contract testing architecture with PACT framework and broker integration, Multi-tier testing architecture with consumer contract creation and provider verification, CI/CD integration architecture with automated contract validation and deployment gates, Version management architecture with semantic versioning and compatibility tracking, Notification architecture with webhook integration and team alerting systems
+//
+// TESTING: Consumer contract testing with PACT DSL and mock provider validation, Provider verification testing with contract replay and real service validation, Integration testing with PACT Broker and can-i-deploy validation, Compatibility testing with version matrix and breaking change detection, End-to-end testing with complete consumer-provider contract lifecycle validation
+//
+// CONSTRAINTS:
+// Quality: Zero false positive contract failures with accurate contract validation and reliable testing, Complete contract coverage with comprehensive request/response validation and edge cases, Reliable contract verification with consistent provider testing and deterministic results, Comprehensive version management with proper semantic versioning and compatibility tracking, Configuration consistency with standardized contract patterns across all services, Error handling with detailed failure analysis and actionable error messages, Documentation quality with clear contract specifications and usage examples
+// Performance: Optimized contract testing with fast test execution and minimal overhead, Memory usage optimization with efficient contract storage and processing, CI/CD pipeline efficiency with parallel contract verification and optimized workflows, Network performance optimization with efficient broker communication and caching, Storage optimization with efficient contract versioning and retention policies, Test execution speed optimization with selective verification and incremental testing
+// Security: Secure contract storage with encrypted broker communication and access control, Authentication integration with secure provider verification and token management, Access control for contract management with role-based permissions and audit logging, Sensitive data protection with contract data masking and sanitization, Compliance validation with contract security requirements and regulatory standards
+//
+// FRAMEWORKS: PACT JVM 4.6+, PACT Broker, Spring Boot 3.4+, JUnit 5, Maven/Gradle, Docker, Kubernetes, Jenkins/GitLab CI, RestAssured
+//
+// ORIGINALITY REQUIREMENTS:
+// - Create COMPREHENSIVE PACT testing framework for [PROJECT_NAME] microservices contracts and [DOMAIN_NAME] API validation
+// - Implement ADVANCED consumer contract creation tailored to [PROJECT_NAME] service architecture and [BUSINESS_PURPOSE] requirements
+// - Design SOPHISTICATED provider verification for [DOMAIN_NAME] contract compliance and compatibility validation
+// - Generate THOROUGH PACT Broker integration for [PROJECT_NAME] centralized contract management and version control
+// - Create ROBUST can-i-deploy workflow for [BUSINESS_PURPOSE] safe deployment verification and breaking change prevention
+// - Implement COMPLETE CI/CD integration for [DOMAIN_NAME] automated contract testing and deployment gates
+// - Design COMPREHENSIVE versioning strategy for [PROJECT_NAME] contract evolution and backward compatibility
+// - Generate ADVANCED webhook automation for [BUSINESS_PURPOSE] contract verification triggers and team notifications
+// - Create DETAILED documentation for [DOMAIN_NAME] contract testing procedures and team collaboration workflows
+// - Implement AUTOMATED validation for [PROJECT_NAME] contract quality and testing effectiveness verification
+//
+// Generate comprehensive PACT consumer-driven contract testing solution that:
+// - Creates COMPLETE consumer contract tests with PACT DSL and comprehensive request/response validation
+// - Implements ADVANCED provider verification with contract replay and compatibility checking mechanisms
+// - Develops SOPHISTICATED PACT Broker integration with centralized storage and version management
+// - Generates THOROUGH can-i-deploy validation with safe deployment workflows and breaking change detection
+// - Creates ROBUST CI/CD integration with automated contract testing and deployment gate enforcement
+// - Implements COMPREHENSIVE versioning strategy with semantic versioning and backward compatibility validation
+// - Develops ADVANCED webhook integration with automated verification triggers and team notification systems
+// - Generates COMPLETE testing framework with consumer and provider contract lifecycle management
+// - Creates DETAILED documentation explaining contract testing methodology and team collaboration practices
+// - Implements AUTOMATED monitoring ensuring contract testing effectiveness and deployment safety validation
+
+/*
+ * ENHANCED CRAFT METHOD FOR COMPREHENSIVE PACT CONSUMER-DRIVEN CONTRACT TESTING
+ * This enterprise-grade prompt generates COMPLETE, production-ready contract testing solution with:
+ * 
+ * COMPREHENSIVE CONSUMER CONTRACT CREATION:
+ * - Advanced PACT DSL usage with request matchers and response validation
+ * - Sophisticated contract definition with comprehensive API interaction specifications
+ * - Complete request/response validation with headers, body, and status code verification
+ * - Advanced state management with provider state setup and teardown procedures
+ * - Comprehensive test data generation with realistic and edge case scenarios
+ * - Sophisticated contract organization with logical grouping and naming conventions
+ * - Advanced error scenario testing with failure cases and exception handling validation
+ * - Complete contract documentation with inline comments and usage examples
+ * 
+ * ADVANCED PROVIDER VERIFICATION:
+ * - Sophisticated provider state management with database setup and test data preparation
+ * - Advanced contract replay with request verification and response validation
+ * - Complex verification integration with real service instances and dependencies
+ * - Comprehensive compatibility checking with version matrix and breaking change detection
+ * - Advanced filtering and selective verification with tag-based and version-based execution
+ * - Sophisticated failure analysis with detailed error reporting and debugging information
+ * - Complex provider testing with authentication, authorization, and security validation
+ * - Advanced performance validation with response time and throughput verification
+ * 
+ * SOPHISTICATED PACT BROKER INTEGRATION:
+ * - Advanced contract publishing with version tagging and environment management
+ * - Complex contract retrieval with version selection and compatibility filtering
+ * - Comprehensive can-i-deploy validation with deployment safety verification
+ * - Advanced webhook configuration with automated verification triggers
+ * - Sophisticated contract comparison with diff analysis and breaking change detection
+ * - Complex version management with semantic versioning and release coordination
+ * - Advanced notification integration with team alerting and status updates
+ * - Comprehensive audit logging with contract activity tracking and compliance reporting
+ * 
+ * PRODUCTION-READY PACT IMPLEMENTATIONS:
+ * - Thread-safe contract testing with proper isolation and resource management
+ * - Memory-efficient contract processing with optimized storage and validation
+ * - Performance-optimized testing with parallel execution and efficient verification
+ * - Error-resilient contract validation with comprehensive exception handling and recovery
+ * - Configurable testing parameters with external property support and environment awareness
+ * - Monitored contract testing with detailed logging and performance tracking
+ * - Documented contract patterns with comprehensive guides and best practices
+ * - Maintainable testing architecture with modular design and reusable components
+ * 
+ * PARAMETERIZED PLACEHOLDERS - Replace with your specific values:
+ * - [PROJECT_NAME] → Your project name (ECommerceApp, PaymentService, UserManagement, etc.)
+ * - [DOMAIN_NAME] → Your business domain (ecommerce, payments, user-management, etc.)
+ * - [BUSINESS_PURPOSE] → Your business purpose (online shopping, payment processing, user authentication, etc.)
+ * - [CONSUMER_SERVICE] → Your consumer service (checkout-service, frontend-app, mobile-client, etc.)
+ * - [PROVIDER_SERVICE] → Your provider service (payment-api, user-api, inventory-api, etc.)
+ * - [COMPANY_NAME] → Your company name (RetailCorp, PaymentInc, UserSystems, etc.)
+ * - [PACT_BROKER_URL] → Your PACT Broker URL (https://pact-broker.company.com, etc.)
+ * - [PACKAGE_NAME] → Your package structure (com.company.contracts, org.enterprise.pact, etc.)
+ * 
+ * PACT CONTRACT TESTING CUSTOMIZATIONS:
+ * - Identify your specific API contracts and service interactions for comprehensive contract coverage
+ * - Define your deployment workflows and environment strategies for safe deployment validation
+ * - Specify your versioning requirements and compatibility rules for contract evolution management
+ * - Configure your CI/CD integration requirements and automation needs for contract testing pipelines
+ * - Set up your notification and alerting requirements for team collaboration and issue detection
+ * - Define your documentation requirements and knowledge sharing for contract testing practices
+ * - Specify your security requirements and compliance needs for contract data protection
+ * - Configure your monitoring and analytics requirements for contract testing effectiveness tracking
+ * 
+ * The more specific your service contracts and [DOMAIN_NAME] API interactions, the more targeted and effective the PACT contract testing will be!
+ */
+
