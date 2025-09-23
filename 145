@@ -1,0 +1,57 @@
+CRAFT-TPO_ANALYSIS:
+  CONTEXT:
+    domain: "Git Repository Analytics"
+    scale: 
+      - repository_size: "39k-69k LOC (Java microservices)"
+      - analysis_depth: "Last 10 commits"
+      - team_size: "Multiple contributors"
+    constraints:
+      - real_time_analysis: true
+      - comprehensive_metrics: true
+      - contributor_attribution: required
+    integration: "IDE-native @project command"
+    
+  REQUIREMENTS:
+    functional:
+      - "Analyze last 10 commits comprehensively"
+      - "Identify most changed files with metrics"
+      - "Rank contributors by impact"
+      - "Generate actionable insights"
+    non_functional:
+      - response_time: "< 2 seconds"
+      - accuracy: "100% git history fidelity"
+      - format: "Structured, scannable output"
+      
+  ARCHITECTURE:
+    pattern: "Command-Query Separation"
+    layers:
+      - presentation: "IDE integration layer"
+      - analysis: "Git history processor"
+      - aggregation: "Metrics calculator"
+      - formatting: "Output renderer"
+      
+  FRAMEWORK:
+    git_commands: "Native git CLI/JGit API"
+    processing: "Stream-based analysis"
+    output: "Structured YAML/JSON"
+    
+  TECHNOLOGY:
+    algorithms:
+      - file_change_detection: "Diff analysis"
+      - contributor_ranking: "Weighted scoring"
+      - trend_analysis: "Time-series patterns"
+      
+  TESTING:
+    coverage_target: "98%"
+    test_scenarios:
+      - empty_repository
+      - single_contributor
+      - merge_commits
+      - large_repositories
+      
+  PERSONA: "Principal DevOps Engineer"
+  
+  ORIGINALITY:
+    - "Intelligent change categorization"
+    - "Impact-weighted contributor scoring"
+    - "Predictive hotspot detection"
