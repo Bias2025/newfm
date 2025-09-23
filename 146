@@ -1,0 +1,81 @@
+CONTEXT:
+  domain: "Version Control Analytics"
+  purpose: "Git repository history analysis and visualization"
+  scale:
+    repository_size: "10K-1M commits typical"
+    branch_complexity: "main/master branch focus"
+    time_window: "recent history (configurable)"
+  constraints:
+    technical: "Git CLI availability, repository access"
+    performance: "Fast execution for large repositories"
+    output: "Human-readable, actionable insights"
+  integration:
+    tools: ["git", "bash/shell", "optional: git-extras, tig"]
+    platforms: ["Linux", "macOS", "Windows (Git Bash)"]
+
+REQUIREMENTS:
+  functional:
+    - "Display recent commit history on main branch"
+    - "Identify large/significant commits"
+    - "Show file changes statistics"
+    - "Highlight author contributions"
+    - "Display commit messages and dates"
+  non_functional:
+    - execution_time: "< 2 seconds for 10K commits"
+    - memory_usage: "< 100MB"
+    - readability: "Clear, structured output"
+    - accuracy: "100% git data fidelity"
+
+ARCHITECTURE:
+  pattern: "Command Pipeline Architecture"
+  components:
+    data_extraction: "Git log with custom formatting"
+    filtering: "Size-based and time-based filters"
+    aggregation: "Statistics computation"
+    presentation: "Formatted output generation"
+  data_flow:
+    - "Git repository → Git commands"
+    - "Raw data → Filtering pipeline"
+    - "Filtered data → Formatting engine"
+    - "Formatted output → Terminal display"
+
+FRAMEWORK:
+  primary_tool: "Git 2.40+"
+  shell: "Bash 5.0+"
+  utilities:
+    - "awk/sed for text processing"
+    - "sort/uniq for data manipulation"
+    - "column for formatting"
+  optional_enhancements:
+    - "git-extras for additional statistics"
+    - "jq for JSON processing if needed"
+
+TECHNOLOGY:
+  algorithms:
+    - "Logarithmic time complexity for commit traversal"
+    - "Stream processing for memory efficiency"
+  optimization:
+    - "Use git plumbing commands for speed"
+    - "Limit graph traversal depth"
+    - "Cache frequently accessed data"
+
+TESTING:
+  validation:
+    - "Test on repositories of various sizes"
+    - "Verify output accuracy"
+    - "Performance benchmarking"
+    - "Edge cases (empty repo, single commit)"
+
+PERSONA:
+  expertise: "Senior DevOps Engineer with 10+ years Git expertise"
+  knowledge:
+    - "Deep understanding of Git internals"
+    - "Shell scripting mastery"
+    - "Performance optimization techniques"
+
+ORIGINALITY:
+  unique_features:
+    - "Intelligent large commit detection"
+    - "Visual commit size indicators"
+    - "Smart time windowing"
+    - "Author impact analysis"
