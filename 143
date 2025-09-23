@@ -1,0 +1,94 @@
+CONTEXT:
+  domain: "Build Tool Migration"
+  scale:
+    projects_affected: "1-1000+ modules"
+    complexity: "Simple to Enterprise-grade"
+    dependencies: "10-500+ artifacts"
+  constraints:
+    technical: "Preserve all build logic, dependencies, plugins"
+    business: "Zero functionality loss, maintain CI/CD compatibility"
+    regulatory: "Maintain security scanning, license compliance"
+  team_composition: "DevOps, Build Engineers, Developers"
+  integration_requirements:
+    - "IDE compatibility (IntelliJ, Eclipse, VSCode)"
+    - "CI/CD pipeline integration"
+    - "Repository management (Nexus, Artifactory)"
+
+REQUIREMENTS:
+  functional:
+    - "Convert build.gradle/build.gradle.kts to pom.xml"
+    - "Preserve all dependencies with correct scopes"
+    - "Convert custom tasks to Maven plugins/executions"
+    - "Maintain multi-module project structure"
+    - "Convert property files and version catalogs"
+  non_functional:
+    - accuracy: "100% dependency preservation"
+    - performance: "Build time variance < 10%"
+    - compatibility: "Maven 3.8+ compliant output"
+    - validation: "Automated verification of conversion"
+
+ARCHITECTURE:
+  pattern: "Multi-stage Transformation Pipeline"
+  components:
+    parser: "Gradle DSL/Kotlin DSL parser"
+    transformer: "AST to Maven POM converter"
+    validator: "Dependency resolution checker"
+    optimizer: "POM structure optimizer"
+  data_flow:
+    1: "Parse Gradle configuration"
+    2: "Extract dependencies, plugins, tasks"
+    3: "Transform to Maven structure"
+    4: "Validate and optimize"
+    5: "Generate executable POM"
+
+FRAMEWORK:
+  technology_stack:
+    language: "Java 17+"
+    build_tools: "Maven 3.8+, Gradle 8.0+"
+    validation: "Maven Enforcer, Dependency Plugin"
+    testing: "JUnit 5, TestContainers"
+  conversion_engine:
+    parser: "Groovy/Kotlin AST parser"
+    generator: "JDOM2/Jackson XML"
+    validator: "Maven Model Builder API"
+
+TECHNOLOGY:
+  algorithms:
+    - "Recursive descent parsing for nested configurations"
+    - "Graph traversal for dependency resolution"
+    - "Pattern matching for plugin conversion"
+  deployment:
+    - "Standalone CLI tool"
+    - "Maven plugin"
+    - "IDE plugin"
+  validation_pipeline:
+    - "Syntax validation"
+    - "Dependency resolution check"
+    - "Build execution verification"
+
+TESTING:
+  coverage_target: "98%+"
+  test_types:
+    unit: "Parser logic, transformation rules"
+    integration: "Full project conversion"
+    validation: "Build output comparison"
+    performance: "Large project handling"
+  verification_metrics:
+    - "Identical artifact generation"
+    - "Dependency tree equivalence"
+    - "Build time comparison"
+
+PERSONA:
+  expertise: "Principal Build Engineer, 15+ years"
+  specialization: "Enterprise build systems, polyglot environments"
+  experience:
+    - "1000+ Gradle to Maven migrations"
+    - "Complex multi-module conversions"
+    - "Custom plugin development"
+
+ORIGINALITY:
+  unique_aspects:
+    - "Intelligent plugin mapping with fallback strategies"
+    - "Automatic BOM generation from version catalogs"
+    - "Custom task to Maven plugin converter"
+    - "Incremental conversion support"
