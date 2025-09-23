@@ -1,0 +1,135 @@
+CONTEXT:
+  domain: "Microservice Architecture Analysis & Documentation"
+  scale:
+    codebase_size: "10-500 microservices"
+    lines_of_code: "100K-10M LOC"
+    analysis_time: "< 5 minutes for complete architecture mapping"
+  constraints:
+    technical: "Must handle polyglot microservices (Java, Python, Node.js, Go)"
+    business: "Generate executive-readable documentation"
+    compliance: "Identify security vulnerabilities and compliance gaps"
+  team_composition:
+    consumers: "Architects, DevOps, Security Teams, New Developers"
+  integration_requirements:
+    - "Git repositories (GitHub, GitLab, Bitbucket)"
+    - "Container registries (Docker Hub, ECR, GCR)"
+    - "Service meshes (Istio, Linkerd)"
+    - "API gateways (Kong, Spring Cloud Gateway)"
+
+REQUIREMENTS:
+  functional:
+    - "Auto-discover all microservices in codebase"
+    - "Map inter-service communication patterns"
+    - "Identify data flow and dependencies"
+    - "Extract API contracts and schemas"
+    - "Detect architectural patterns (CQRS, Event Sourcing, Saga)"
+    - "Generate visual architecture diagrams"
+  non_functional:
+    performance:
+      analysis_speed: "1000+ files/second"
+      memory_usage: "< 2GB for 1M LOC"
+      accuracy: "99.9% service discovery rate"
+    scalability:
+      horizontal: "Parallel analysis of multiple repositories"
+      incremental: "Delta analysis for changed services only"
+    reliability:
+      error_tolerance: "Continue analysis despite partial failures"
+      recovery: "Resume from checkpoint on interruption"
+
+ARCHITECTURE:
+  pattern: "Pipeline Architecture with Plugin System"
+  components:
+    discovery_engine:
+      purpose: "Identify microservices and boundaries"
+      techniques:
+        - "Build file analysis (pom.xml, package.json, go.mod)"
+        - "Container definition scanning (Dockerfile, docker-compose)"
+        - "Kubernetes manifest parsing"
+        - "Source code AST analysis"
+    communication_mapper:
+      purpose: "Trace inter-service calls"
+      methods:
+        - "REST endpoint analysis"
+        - "gRPC service definitions"
+        - "Message queue topic extraction"
+        - "GraphQL schema federation"
+    pattern_detector:
+      purpose: "Identify architectural patterns"
+      patterns:
+        - "API Gateway pattern"
+        - "Service Mesh adoption"
+        - "Event-driven architecture"
+        - "Database per service"
+        - "Shared database anti-pattern"
+    documentation_generator:
+      outputs:
+        - "Mermaid/PlantUML diagrams"
+        - "OpenAPI specifications"
+        - "Architecture Decision Records (ADRs)"
+        - "Service catalog entries"
+
+FRAMEWORK:
+  core_technologies:
+    language: "Java 17+ with Spring Boot 3.2.x"
+    parsing_libraries:
+      java: "JavaParser 3.25+"
+      python: "AST module"
+      javascript: "Babel Parser"
+      go: "go/ast package"
+    graph_database: "Neo4j 5.x for relationship mapping"
+    visualization: "D3.js for interactive diagrams"
+  analysis_framework:
+    static_analysis: "SonarQube, SpotBugs, PMD"
+    dependency_analysis: "Maven/Gradle dependency tree"
+    container_analysis: "Trivy, Grype"
+    api_analysis: "OpenAPI Parser, GraphQL Inspector"
+
+TECHNOLOGY:
+  implementation_details:
+    algorithms:
+      service_discovery: "Depth-first search with memoization"
+      dependency_resolution: "Topological sorting"
+      cycle_detection: "Tarjan's strongly connected components"
+      pattern_matching: "Aho-Corasick for multi-pattern search"
+    deployment:
+      platform: "Kubernetes with Helm charts"
+      scaling: "HPA based on analysis queue depth"
+      storage: "S3-compatible for analysis results"
+    monitoring:
+      metrics: "Prometheus + Grafana"
+      tracing: "OpenTelemetry"
+      logging: "ELK stack"
+
+TESTING:
+  coverage_requirements:
+    unit_tests: "98% minimum"
+    integration_tests: "95% service interaction coverage"
+    performance_tests: "Analyze 1M LOC in < 5 minutes"
+  test_scenarios:
+    - "Monorepo with 100+ services"
+    - "Distributed repositories"
+    - "Mixed language services"
+    - "Legacy and modern services"
+    - "Circular dependencies"
+    - "Orphaned services"
+
+PERSONA:
+  expertise_level: "Principal Software Architect"
+  experience:
+    years: "15+ in distributed systems"
+    domains: "Finance, Healthcare, E-commerce"
+    scale: "Systems serving 100M+ users"
+  specializations:
+    - "Microservice decomposition"
+    - "Event-driven architectures"
+    - "Cloud-native patterns"
+    - "DevOps transformation"
+
+ORIGINALITY:
+  unique_aspects:
+    - "AI-powered pattern recognition"
+    - "Automatic technical debt scoring"
+    - "Evolution timeline generation"
+    - "Automated refactoring suggestions"
+    - "Cost optimization recommendations"
+    - "Security vulnerability mapping"
