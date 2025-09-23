@@ -1,0 +1,64 @@
+CRAFT-TPO-ANALYSIS:
+  CONTEXT:
+    domain: "Software Architecture Documentation"
+    purpose: "Generate PlantUML class diagram via LLM prompt"
+    scale: "Single diagram generation"
+    constraints:
+      - Must use PlantUML syntax
+      - Must show specific relationships (1:1)
+      - Must include fields and methods
+    team_composition: "Developers needing UML documentation"
+    integration: "PlantUML rendering tools"
+
+  REQUIREMENTS:
+    functional:
+      - Generate valid PlantUML syntax
+      - Show User class with 1:1 to Address
+      - Show User class with 1:1 to Order
+      - Include fields for each class
+      - Include public methods for each class
+    non_functional:
+      - Syntax must be 100% valid
+      - Diagram must be clear and readable
+      - Follow UML best practices
+
+  ARCHITECTURE:
+    pattern: "Prompt Engineering Pattern"
+    style: "Structured Instruction Set"
+    layers:
+      - instruction_layer: "Clear directives"
+      - constraint_layer: "Explicit requirements"
+      - example_layer: "Format demonstration"
+
+  FRAMEWORK:
+    technology: "PlantUML"
+    version: "Latest"
+    features:
+      - Class diagrams
+      - Relationship notation
+      - Field/method visibility markers
+
+  TECHNOLOGY:
+    implementation: "LLM Prompt Engineering"
+    techniques:
+      - Explicit instruction formatting
+      - Constraint specification
+      - Output format definition
+      - Example-driven clarity
+
+  TESTING:
+    validation:
+      - PlantUML syntax validation
+      - Relationship correctness
+      - Completeness check
+    coverage: "100% of requirements"
+
+  PERSONA:
+    expertise: "Principal Software Architect"
+    experience: "15+ years UML/PlantUML"
+
+  ORIGINALITY:
+    unique_aspects:
+      - Multi-layered instruction structure
+      - Explicit syntax requirements
+      - Complete field/method specifications
