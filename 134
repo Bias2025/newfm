@@ -1,0 +1,94 @@
+CONTEXT
+Domain: Enterprise Integration Patterns implementation using Apache Camel within Spring Boot microservices architecture
+Scale Requirements:
+
+50,000 concurrent users
+10,000 RPS message processing
+< 100ms P99 latency for synchronous routes
+1M+ messages/day async processing
+Constraints:
+Java 17+ mandatory
+Spring Boot 3.2.x framework
+Apache Camel 4.x compatibility
+PostgreSQL 15+ for persistence
+Redis for distributed caching
+Kubernetes deployment target
+Team Composition: Senior engineers with Spring expertise, limited Camel experience
+Integration Requirements: REST APIs, Kafka, RabbitMQ, AWS S3, Database polling, File systems
+REQUIREMENTS
+Functional Requirements:
+
+Multi-protocol message routing (HTTP, JMS, Kafka, AMQP)
+Content-based routing with complex predicates
+Message transformation and enrichment
+Error handling with dead letter queues
+Transaction management across routes
+Dynamic route configuration
+Circuit breaker patterns for external services
+Non-Functional Requirements:
+
+99.99% availability SLA
+< 50ms median latency for synchronous routes
+Horizontal scalability to 20 pods
+Zero message loss guarantee
+98% test coverage minimum
+OWASP Top 10 compliance
+Full observability with distributed tracing
+
+ARCHITECTURE
+Pattern: Hexagonal Architecture with Event-Driven messaging
+Deployment Style: Microservices with service mesh (Istio)
+Layers:Presentation Layer: REST Controllers, WebSocket endpoints
+Application Layer: Camel Routes, Route Builders, Processors
+Domain Layer: Business entities, Domain services, Value objects
+Infrastructure Layer: JPA repositories, Camel components, External adapters
+Data Flow:
+
+Inbound: HTTP → Camel Route → Domain Service → Database
+Outbound: Event → Camel Route → Message Broker → External System
+
+FRAMEWORK
+Core Stack:
+Java: 17 (with virtual threads enabled)
+Spring Boot: 3.2.5
+Apache Camel: 4.3.0
+Spring Boot Camel Starter: 4.3.0
+Database: PostgreSQL 15.5 (with JSONB, partitioning)
+Cache: Redis 7.2 (with Redis Streams)
+Message Broker: Apache Kafka 3.6
+Monitoring: Micrometer + Prometheus + Grafana
+Tracing: OpenTelemetry with Jaeger
+
+TECHNOLOGY
+Implementation Details:
+
+Route definitions using Java DSL and YAML DSL hybrid
+Custom error handlers with exponential backoff
+Idempotent consumers using Redis
+Saga pattern for distributed transactions
+Content enricher with parallel processing
+Aggregator with custom correlation strategies
+Wire tap for audit logging
+Custom type converters for domain objects
+
+TESTING
+Coverage Requirements: 98% minimum
+
+Unit Tests: RouteBuilder tests with CamelTestSupport
+Integration Tests: TestContainers for PostgreSQL, Redis, Kafka
+Contract Tests: Spring Cloud Contract
+Performance Tests: Gatling with 10K concurrent users
+Chaos Engineering: Litmus chaos experiments
+Security Tests: OWASP ZAP automated scanning
+
+PERSONA
+Expertise Level: Principal Engineer with 15+ years enterprise integration experience, Apache Camel committer level knowledge, Spring Boot expert, distributed systems architect
+
+ORIGINALITY
+Unique Aspects:
+
+Virtual thread optimization for Camel routes
+Custom Camel component for domain-specific protocols
+AI-powered route optimization based on traffic patterns
+Zero-downtime route updates with versioning
+Predictive scaling based on message queue depth
