@@ -1,0 +1,74 @@
+CRAFT-TPO_ANALYSIS:
+  CONTEXT:
+    domain: "Build Configuration Migration"
+    scale:
+      projects_per_day: "100-500 migrations"
+      avg_dependencies: "50-200 per project"
+      complexity: "Multi-module enterprise projects"
+    constraints:
+      - "Must preserve all Maven functionality"
+      - "Zero dependency resolution errors"
+      - "Maintain plugin configurations"
+      - "Support custom repositories"
+    team_composition: "DevOps engineers, Build engineers"
+    integration_requirements:
+      - "CI/CD pipeline compatibility"
+      - "IDE integration (IntelliJ, Eclipse)"
+      - "Nexus/Artifactory repository support"
+
+  REQUIREMENTS:
+    functional:
+      - "Convert POM XML to Gradle Kotlin DSL"
+      - "Preserve dependency scopes and exclusions"
+      - "Migrate plugin configurations"
+      - "Handle multi-module projects"
+      - "Convert profiles to Gradle equivalents"
+    non_functional:
+      - "Conversion time: < 2 seconds per module"
+      - "Accuracy: 100% dependency preservation"
+      - "Validation: Automated verification"
+      - "Build time: Equal or better than Maven"
+
+  ARCHITECTURE:
+    pattern: "Pipeline Architecture"
+    components:
+      parser: "XML DOM parser for POM files"
+      transformer: "AST-based conversion engine"
+      generator: "Kotlin DSL code generator"
+      validator: "Dependency resolution checker"
+    data_flow:
+      - "POM.xml → Parser → AST → Transformer → Gradle DSL → Validator"
+
+  FRAMEWORK:
+    technology_stack:
+      language: "Java 17"
+      build_tool: "Gradle 8.5+"
+      dsl: "Kotlin DSL (build.gradle.kts)"
+      testing: "JUnit 5, TestContainers"
+      validation: "Gradle Tooling API"
+
+  TECHNOLOGY:
+    implementation_details:
+      - "JAXB for XML parsing"
+      - "StringTemplate for code generation"
+      - "Parallel processing for multi-module"
+      - "Caching for repository metadata"
+
+  TESTING:
+    coverage_target: "98%"
+    test_types:
+      unit: "Parser, transformer logic"
+      integration: "Full conversion pipeline"
+      validation: "Build execution verification"
+      performance: "Large project conversion"
+
+  PERSONA:
+    expertise: "Principal Build Engineer"
+    experience: "15+ years Maven/Gradle"
+    specialization: "Enterprise build optimization"
+
+  ORIGINALITY:
+    unique_aspects:
+      - "Intelligent plugin mapping"
+      - "Automatic performance optimization"
+      - "Smart dependency conflict resolution"
