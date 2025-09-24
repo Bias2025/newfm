@@ -1,0 +1,126 @@
+CONTEXT:
+  domain: "AI-Powered Code Documentation Generation"
+  purpose: "Expert-level automated documentation with quality assurance"
+  scale:
+    codebase_size: "1M+ LOC"
+    documentation_throughput: "10,000+ methods/hour"
+    quality_score: "95%+ expert approval rate"
+  constraints:
+    - "Must match or exceed senior developer documentation quality"
+    - "Iterative refinement based on developer feedback"
+    - "Context-aware personalization for different audiences"
+    - "IDE-integrated real-time generation"
+  team_composition:
+    - "Senior developers requiring minimal guidance"
+    - "Junior developers needing structured assistance"
+    - "Documentation consumers with varying technical levels"
+  integration_requirements:
+    - "VS Code/IntelliJ IDEA native extensions"
+    - "GPT-4/Claude-3 API integration"
+    - "Git hooks for documentation validation"
+    - "CI/CD pipeline integration"
+
+REQUIREMENTS:
+  functional:
+    - "Multi-iteration documentation refinement"
+    - "Personalized output based on developer expertise"
+    - "Context-aware code comprehension support"
+    - "Quality metrics and automated validation"
+    - "Few-shot and zero-shot prompt optimization"
+  non_functional:
+    - "Generation latency < 2 seconds per method"
+    - "95%+ accuracy in technical descriptions"
+    - "Support for 15+ programming languages"
+    - "Concurrent documentation of 100+ files"
+    - "Memory footprint < 500MB in IDE"
+
+ARCHITECTURE:
+  pattern: "Multi-Agent Expert System with Feedback Loop"
+  layers:
+    prompt_engineering:
+      - "Dynamic prompt template selection"
+      - "Few-shot example injection"
+      - "Context window optimization"
+      - "Chain-of-thought reasoning"
+    quality_assurance:
+      - "Multi-LLM consensus validation"
+      - "Expert heuristic evaluation"
+      - "Automated metric scoring"
+      - "Human-in-the-loop refinement"
+    personalization:
+      - "Developer profile learning"
+      - "Project style adaptation"
+      - "Audience-specific generation"
+      - "Knowledge gap detection"
+    integration:
+      - "IDE extension framework"
+      - "Real-time code analysis"
+      - "Incremental documentation updates"
+      - "Version control integration"
+
+FRAMEWORK:
+  core_technologies:
+    llm_models:
+      primary: "GPT-4-Turbo"
+      validation: "Claude-3-Opus"
+      fallback: "Llama-3-70B"
+    ide_platforms:
+      - "VS Code Extension API"
+      - "IntelliJ Platform SDK"
+      - "Language Server Protocol"
+    quality_frameworks:
+      - "BLEU/ROUGE scoring"
+      - "Custom documentation metrics"
+      - "Semantic similarity analysis"
+    storage:
+      - "Vector databases for examples"
+      - "Redis for prompt caching"
+      - "PostgreSQL for metrics"
+
+TECHNOLOGY:
+  implementation_details:
+    prompt_optimization:
+      - "Automatic prompt engineering via DSPy"
+      - "Few-shot example selection algorithms"
+      - "Dynamic temperature adjustment"
+      - "Token budget optimization"
+    quality_validation:
+      - "Multi-agent review system"
+      - "Consistency checking across documentation"
+      - "Technical accuracy verification"
+      - "Readability scoring (Flesch-Kincaid)"
+    personalization_engine:
+      - "Developer behavior modeling"
+      - "Preference learning via feedback"
+      - "Style transfer networks"
+      - "Adaptive complexity adjustment"
+
+TESTING:
+  validation_methodology:
+    expert_evaluation: "Panel of 10+ senior developers"
+    automated_metrics:
+      - "Documentation completeness: 98%+"
+      - "Technical accuracy: 95%+"
+      - "Consistency score: 90%+"
+      - "Readability index: 60-70"
+    user_studies:
+      - "A/B testing with 100+ developers"
+      - "Comprehension task success rate"
+      - "Time-to-understanding metrics"
+    benchmark_suites:
+      - "CodeXGLUE documentation benchmark"
+      - "Custom enterprise codebases"
+      - "Open-source project validation"
+
+PERSONA:
+  expertise: "Principal Documentation Architect"
+  experience: "15+ years in technical writing and AI systems"
+  specialization: "LLM optimization, developer experience, quality assurance"
+
+ORIGINALITY:
+  innovations:
+    - "Multi-iteration consensus documentation"
+    - "Expertise-adaptive prompt engineering"
+    - "Real-time quality scoring with explanations"
+    - "Personalized knowledge gap filling"
+    - "Cross-LLM validation framework"
