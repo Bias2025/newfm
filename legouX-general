@@ -1,0 +1,115 @@
+# LegoUX Front-End Design Implementation Prompt - CRAFT Format
+
+```typescript
+// You are a world-class LegoUX design system architect and front-end development expert with 25+ years of experience in enterprise-grade UI/UX implementation,
+// specializing in LegoUX component integration, design system consistency, and comprehensive front-end development using modular component libraries.
+//
+// CONTEXT: Design and implement comprehensive front-end application using LegoUX design system for [PROJECT_NAME]
+// to create [DOMAIN_NAME] domain user interfaces serving [BUSINESS_PURPOSE] with complete LegoUX component integration and design consistency
+//
+// REQUIREMENTS:
+// Functional: Comprehensive LegoUX component integration with [UI_COMPONENT] implementation and design system adherence, Advanced component customization with LegoUX theming and brand-specific styling, Local repository integration with [LOCAL_DIRECTORY_PATH] component sourcing and version management, Tag-based component selection with [LEGOUX_TAG] filtering and feature-specific implementations, Responsive design implementation with LegoUX grid system and breakpoint management, Accessibility compliance with WCAG 2.1 standards and LegoUX accessibility patterns, State management integration with React/Angular state patterns and LegoUX component lifecycle, Form validation with LegoUX form components and comprehensive validation patterns, Navigation implementation with LegoUX routing components and user flow optimization, Performance optimization with lazy loading and LegoUX component tree shaking, Internationalization support with LegoUX localization patterns and multi-language implementation, Testing integration with LegoUX component testing utilities and comprehensive coverage
+// Non-Functional: Enhanced user experience through consistent LegoUX design patterns and intuitive interface design, Improved development velocity with reusable LegoUX components and standardized implementation patterns, Better design consistency through LegoUX design system adherence and brand guideline compliance, Enhanced maintainability with modular component architecture and clear separation of concerns, Improved accessibility through LegoUX accessibility standards and inclusive design practices, Better performance through optimized LegoUX components and efficient rendering strategies, Enhanced scalability through componentized architecture and reusable design patterns, Improved code quality through LegoUX best practices and standardized development approaches
+//
+// ARCHITECTURE: Component-based architecture with LegoUX design system integration and modular component organization, State management architecture with centralized state handling and component communication, Responsive design architecture with LegoUX grid system and mobile-first approach, Performance architecture with lazy loading and optimized component rendering, Accessibility architecture with WCAG compliance and inclusive design patterns
+//
+// TESTING: Component testing with LegoUX testing utilities and comprehensive unit test coverage, Integration testing with user interaction scenarios and component integration validation, Accessibility testing with automated and manual accessibility validation, Visual testing with screenshot comparison and design consistency verification, Performance testing with rendering speed and user experience metrics validation
+//
+// CONSTRAINTS:
+// Quality: Complete LegoUX design system compliance with brand guidelines and design consistency, Zero accessibility violations with WCAG 2.1 AA compliance and inclusive design patterns, Reliable component performance with consistent rendering and smooth user interactions, Comprehensive responsive design with optimal experience across all device types and screen sizes, Configuration consistency with LegoUX theming and standardized styling approaches, Error handling with graceful degradation and user-friendly error messages, Code quality with LegoUX best practices and maintainable component architecture
+// Performance: Optimized bundle size with tree shaking and efficient component loading strategies, Memory usage optimization with efficient component lifecycle management and cleanup, Rendering performance optimization with virtual DOM efficiency and minimal re-renders, Network performance optimization with lazy loading and efficient asset delivery, Mobile performance optimization with touch interactions and responsive design efficiency, Loading speed optimization with progressive loading and skeleton states
+// Security: Secure component implementation with XSS prevention and input sanitization, Access control integration with role-based UI rendering and feature toggling, Data protection with secure form handling and sensitive information masking, Audit logging with user interaction tracking and security event monitoring, Compliance with data protection regulations and privacy requirements
+//
+// FRAMEWORKS: LegoUX Design System, React 18+/Angular 16+/Vue 3+, TypeScript 5.0+, Styled Components/CSS Modules, Storybook, Jest, React Testing Library/Angular Testing
+//
+// ORIGINALITY REQUIREMENTS:
+// - Create COMPREHENSIVE LegoUX implementation for [PROJECT_NAME] front-end development and [DOMAIN_NAME] user interface design
+// - Implement ADVANCED component integration tailored to [PROJECT_NAME] requirements using [UI_COMPONENT] from [LOCAL_DIRECTORY_PATH] with [LEGOUX_TAG]
+// - Design SOPHISTICATED responsive layouts for [DOMAIN_NAME] optimal user experience across all device types and screen sizes
+// - Generate THOROUGH accessibility implementation for [PROJECT_NAME] inclusive design and WCAG compliance standards
+// - Create ROBUST state management for [BUSINESS_PURPOSE] complex application state and component communication
+// - Implement COMPLETE theming system for [DOMAIN_NAME] brand consistency and design system adherence
+// - Design COMPREHENSIVE testing strategy for [PROJECT_NAME] component reliability and user experience validation
+// - Generate ADVANCED performance optimization for [BUSINESS_PURPOSE] fast loading and smooth user interactions
+// - Create DETAILED documentation for [DOMAIN_NAME] LegoUX implementation and development guidelines
+// - Implement AUTOMATED quality assurance for [PROJECT_NAME] design consistency and code quality validation
+//
+// Generate comprehensive LegoUX front-end solution that:
+// - Creates COMPLETE LegoUX component integration with [UI_COMPONENT] implementation and design system consistency
+// - Implements ADVANCED local repository integration with [LOCAL_DIRECTORY_PATH] component sourcing and version management
+// - Develops SOPHISTICATED tag-based selection with [LEGOUX_TAG] filtering and feature-specific component implementations
+// - Generates THOROUGH responsive design with LegoUX grid system and mobile-first development approach
+// - Creates ROBUST accessibility implementation with WCAG compliance and inclusive design patterns
+// - Implements COMPREHENSIVE state management with efficient data flow and component communication
+// - Develops ADVANCED performance optimization with lazy loading and efficient rendering strategies
+// - Generates COMPLETE testing framework with component testing and user experience validation
+// - Creates DETAILED documentation explaining LegoUX implementation and development best practices
+// - Implements AUTOMATED quality assurance ensuring design consistency and accessibility compliance
+
+/*
+ * ENHANCED CRAFT METHOD FOR COMPREHENSIVE LEGOUX FRONT-END DESIGN IMPLEMENTATION
+ * This enterprise-grade prompt generates COMPLETE, production-ready LegoUX solution with:
+ * 
+ * COMPREHENSIVE LEGOUX COMPONENT INTEGRATION:
+ * - Advanced component sourcing from local LegoUX repository with version management
+ * - Sophisticated component customization with theming and brand-specific styling
+ * - Complete design system adherence with LegoUX patterns and consistency validation
+ * - Advanced component composition with reusable building blocks and modular architecture
+ * - Comprehensive responsive implementation with LegoUX grid system and breakpoint management
+ * - Sophisticated accessibility integration with WCAG standards and inclusive design patterns
+ * - Advanced performance optimization with lazy loading and efficient component rendering
+ * - Complete internationalization support with LegoUX localization patterns
+ * 
+ * ADVANCED COMPONENT ARCHITECTURE:
+ * - Sophisticated component hierarchy with proper abstraction and reusability
+ * - Advanced prop management with TypeScript interfaces and validation
+ * - Complex state management with efficient data flow and component communication
+ * - Comprehensive lifecycle management with proper mounting and cleanup procedures
+ * - Advanced error boundary implementation with graceful error handling
+ * - Sophisticated testing integration with component isolation and mocking
+ * - Complex styling architecture with CSS-in-JS and theme management
+ * - Advanced build optimization with tree shaking and bundle splitting
+ * 
+ * SOPHISTICATED USER EXPERIENCE DESIGN:
+ * - Advanced responsive design with mobile-first approach and progressive enhancement
+ * - Complex interaction patterns with touch gestures and keyboard navigation
+ * - Comprehensive accessibility with screen reader support and keyboard accessibility
+ * - Advanced loading states with skeleton screens and progressive loading
+ * - Sophisticated animation integration with smooth transitions and micro-interactions
+ * - Complex form handling with validation and user feedback mechanisms
+ * - Advanced navigation patterns with routing and state persistence
+ * - Comprehensive error handling with user-friendly messages and recovery options
+ * 
+ * PRODUCTION-READY LEGOUX IMPLEMENTATIONS:
+ * - Thread-safe component rendering with proper state isolation and management
+ * - Memory-efficient component architecture with optimized lifecycle and cleanup
+ * - Performance-optimized rendering with virtual DOM efficiency and minimal re-renders
+ * - Error-resilient component behavior with comprehensive error boundaries and fallbacks
+ * - Configurable component system with theme customization and brand adaptation
+ * - Monitored component performance with metrics collection and optimization tracking
+ * - Documented component library with comprehensive usage guides and examples
+ * - Maintainable component architecture with modular design and clear separation of concerns
+ * 
+ * PARAMETERIZED PLACEHOLDERS - Replace with your specific values:
+ * - [PROJECT_NAME] → Your project name (ECommercePortal, DashboardApp, MobileClient, etc.)
+ * - [DOMAIN_NAME] → Your business domain (ecommerce, analytics, healthcare, finance, etc.)
+ * - [BUSINESS_PURPOSE] → Your business purpose (online shopping, data visualization, patient care, etc.)
+ * - [UI_COMPONENT] → Your specific LegoUX component (Button, Card, DataTable, Modal, etc.)
+ * - [LOCAL_DIRECTORY_PATH] → Your local LegoUX path (./src/legoux, ./components/legoux, ./lib/legoux, etc.)
+ * - [LEGOUX_TAG] → Your LegoUX version/tag (v2.1.0, stable, latest, beta, etc.)
+ * - [COMPANY_NAME] → Your company name (TechCorp, DesignSystems, UICompany, etc.)
+ * - [BRAND_COLOR] → Your brand color (#007bff, #28a745, #dc3545, etc.)
+ * 
+ * LEGOUX FRONT-END DESIGN CUSTOMIZATIONS:
+ * - Identify your specific LegoUX components and design requirements for targeted implementation
+ * - Define your responsive design requirements and device support for optimal user experience
+ * - Specify your accessibility requirements and WCAG compliance levels for inclusive design
+ * - Configure your performance requirements and optimization goals for fast user interactions
+ * - Set up your theming requirements and brand customization for design consistency
+ * - Define your testing requirements and quality assurance for reliable component behavior
+ * - Specify your documentation requirements and team collaboration for knowledge sharing
+ * - Configure your deployment requirements and build optimization for efficient delivery
+ * 
+ * The more specific your LegoUX requirements and [DOMAIN_NAME] design needs, the more targeted and effective the front-end implementation will be!
+ */
+
