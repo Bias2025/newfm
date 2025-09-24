@@ -1,0 +1,111 @@
+// You are a world-class LegoUX layout architect and responsive design expert with 25+ years of experience in enterprise-grade UI layout systems,
+// specializing in LegoUX layout components, responsive grid systems, and comprehensive front-end layout implementation using modular design patterns.
+//
+// CONTEXT: Design and implement comprehensive layout architecture using LegoUX layout system for [PROJECT_NAME]
+// to create [DOMAIN_NAME] domain interface layouts serving [BUSINESS_PURPOSE] with complete LegoUX layout component integration and responsive design
+//
+// REQUIREMENTS:
+// Functional: Comprehensive LegoUX layout implementation with [UI_LAYOUT_COMPONENT] integration and responsive grid system, Advanced layout customization with LegoUX spacing system and responsive breakpoint management, Local repository integration with [LOCAL_DIRECTORY_PATH] layout component sourcing and version control, Tag-based layout selection with [LEGOUX_TAG] filtering and layout-specific implementations, Responsive layout patterns with mobile-first approach and progressive enhancement, Accessibility-compliant layouts with semantic HTML structure and screen reader optimization, Layout state management with dynamic layout switching and user preference persistence, Container and wrapper management with LegoUX layout containers and content organization, Flexbox and Grid integration with LegoUX modern layout systems and browser compatibility, Layout performance optimization with efficient rendering and minimal layout thrashing, Cross-device layout consistency with LegoUX responsive utilities and device-specific optimizations, Layout testing framework with visual regression testing and responsive validation
+// Non-Functional: Enhanced layout consistency through LegoUX design system adherence and standardized layout patterns, Improved responsive performance with optimized layout rendering and smooth transitions, Better user experience through intuitive layout hierarchy and visual flow optimization, Enhanced maintainability with modular layout components and clear layout architecture, Improved accessibility through semantic layout structure and inclusive design practices, Better design scalability through reusable layout patterns and component composition, Enhanced development velocity through pre-built layout components and consistent implementation patterns, Improved cross-platform compatibility through responsive layout systems and device optimization
+//
+// ARCHITECTURE: Layout-centric architecture with LegoUX grid system and responsive design patterns, Container hierarchy architecture with nested layout components and content organization, Responsive breakpoint architecture with mobile-first approach and progressive enhancement, Layout state architecture with dynamic layout management and user preference handling, Performance architecture with efficient layout rendering and minimal reflow optimization
+//
+// TESTING: Layout testing with responsive breakpoint validation and visual regression testing, Accessibility testing with layout semantic structure and keyboard navigation validation, Performance testing with layout rendering speed and reflow optimization measurement, Cross-device testing with layout consistency and responsive behavior verification, Integration testing with layout component interaction and state management validation
+//
+// CONSTRAINTS:
+// Quality: Complete responsive design compliance with seamless experience across all device types and orientations, Zero layout breaking with robust responsive patterns and fallback mechanisms, Reliable layout performance with consistent rendering and smooth responsive transitions, Comprehensive accessibility with semantic layout structure and WCAG 2.1 compliance, Configuration consistency with LegoUX layout standards and design system adherence, Error handling with graceful layout degradation and fallback patterns, Code quality with maintainable layout architecture and clear component hierarchy
+// Performance: Optimized layout rendering with minimal reflow and efficient CSS calculations, Memory usage optimization with efficient layout component lifecycle and cleanup, CPU efficiency through optimized responsive calculations and minimal layout thrashing, Network performance optimization with efficient CSS delivery and layout asset loading, Mobile performance optimization with touch-friendly layouts and gesture support, Loading speed optimization with progressive layout rendering and skeleton states
+// Security: Secure layout implementation with XSS prevention in dynamic layout content, Access control integration with role-based layout rendering and feature visibility, Content security with proper layout content sanitization and safe rendering, Responsive image security with proper loading and size validation, Layout data protection with secure content handling and privacy compliance
+//
+// FRAMEWORKS: LegoUX Layout System, CSS Grid, Flexbox, CSS Container Queries, React 18+/Angular 16+/Vue 3+, TypeScript 5.0+, Styled Components
+//
+// ORIGINALITY REQUIREMENTS:
+// - Create COMPREHENSIVE LegoUX layout architecture for [PROJECT_NAME] responsive design and [DOMAIN_NAME] interface organization
+// - Implement ADVANCED layout component integration tailored to [PROJECT_NAME] requirements using [UI_LAYOUT_COMPONENT] from [LOCAL_DIRECTORY_PATH] with [LEGOUX_TAG]
+// - Design SOPHISTICATED responsive patterns for [DOMAIN_NAME] optimal layout experience across all devices and screen sizes
+// - Generate THOROUGH accessibility implementation for [PROJECT_NAME] semantic layout structure and inclusive design
+// - Create ROBUST layout state management for [BUSINESS_PURPOSE] dynamic layout switching and user preference handling
+// - Implement COMPLETE grid system integration for [DOMAIN_NAME] flexible layout composition and content organization
+// - Design COMPREHENSIVE layout testing strategy for [PROJECT_NAME] responsive validation and visual regression prevention
+// - Generate ADVANCED performance optimization for [BUSINESS_PURPOSE] efficient layout rendering and smooth transitions
+// - Create DETAILED documentation for [DOMAIN_NAME] LegoUX layout implementation and responsive design guidelines
+// - Implement AUTOMATED layout validation for [PROJECT_NAME] design consistency and responsive behavior verification
+//
+// Generate comprehensive LegoUX layout-specific solution that:
+// - Creates COMPLETE layout architecture with [UI_LAYOUT_COMPONENT] implementation and responsive grid integration
+// - Implements ADVANCED local repository integration with [LOCAL_DIRECTORY_PATH] layout component sourcing and version management
+// - Develops SOPHISTICATED tag-based selection with [LEGOUX_TAG] filtering and layout-specific component implementations
+// - Generates THOROUGH responsive design with mobile-first approach and progressive enhancement strategies
+// - Creates ROBUST accessibility implementation with semantic layout structure and WCAG compliance
+// - Implements COMPREHENSIVE layout state management with dynamic switching and user preference persistence
+// - Develops ADVANCED performance optimization with efficient rendering and minimal layout thrashing
+// - Generates COMPLETE testing framework with responsive validation and visual regression testing
+// - Creates DETAILED documentation explaining LegoUX layout architecture and responsive design best practices
+// - Implements AUTOMATED quality assurance ensuring layout consistency and responsive behavior validation
+
+/*
+ * ENHANCED CRAFT METHOD FOR COMPREHENSIVE LEGOUX LAYOUT-SPECIFIC DESIGN IMPLEMENTATION
+ * This enterprise-grade prompt generates COMPLETE, production-ready LegoUX layout solution with:
+ * 
+ * COMPREHENSIVE LEGOUX LAYOUT ARCHITECTURE:
+ * - Advanced layout component sourcing from local LegoUX repository with version management
+ * - Sophisticated layout customization with responsive breakpoints and spacing systems
+ * - Complete grid system integration with LegoUX layout patterns and flexible composition
+ * - Advanced container management with nested layouts and content organization
+ * - Comprehensive responsive implementation with mobile-first approach and progressive enhancement
+ * - Sophisticated accessibility integration with semantic HTML structure and screen reader optimization
+ * - Advanced performance optimization with efficient rendering and minimal layout calculations
+ * - Complete cross-device compatibility with consistent layout behavior and optimization
+ * 
+ * ADVANCED RESPONSIVE LAYOUT STRATEGIES:
+ * - Sophisticated breakpoint management with custom breakpoints and device-specific optimization
+ * - Advanced fluid typography with responsive scaling and optimal readability
+ * - Complex grid systems with CSS Grid and Flexbox hybrid implementations
+ * - Comprehensive spacing systems with consistent rhythm and vertical alignment
+ * - Advanced layout composition with reusable layout patterns and component nesting
+ * - Sophisticated adaptive layouts with container queries and element-based responsiveness
+ * - Complex layout state management with dynamic switching and user preferences
+ * - Advanced layout animation with smooth transitions and performance optimization
+ * 
+ * SOPHISTICATED LAYOUT COMPONENT INTEGRATION:
+ * - Advanced component composition with layout-aware components and smart defaults
+ * - Complex layout inheritance with base layout patterns and specialized implementations
+ * - Comprehensive layout theming with design token integration and brand consistency
+ * - Advanced layout customization with props-based configuration and runtime adaptation
+ * - Sophisticated layout validation with type checking and runtime constraint validation
+ * - Complex layout testing with component isolation and behavior verification
+ * - Advanced layout documentation with interactive examples and usage guidelines
+ * - Comprehensive layout optimization with bundle splitting and lazy loading
+ * 
+ * PRODUCTION-READY LAYOUT IMPLEMENTATIONS:
+ * - Thread-safe layout rendering with proper state isolation and concurrent updates
+ * - Memory-efficient layout management with optimized component lifecycle and cleanup
+ * - Performance-optimized responsive behavior with debounced resize handling and efficient calculations
+ * - Error-resilient layout behavior with graceful degradation and fallback patterns
+ * - Configurable layout system with theme customization and breakpoint adaptation
+ * - Monitored layout performance with metrics collection and rendering optimization tracking
+ * - Documented layout patterns with comprehensive usage guides and responsive examples
+ * - Maintainable layout architecture with modular design and clear separation of concerns
+ * 
+ * PARAMETERIZED PLACEHOLDERS - Replace with your specific values:
+ * - [PROJECT_NAME] → Your project name (DashboardApp, ECommercePortal, AdminPanel, etc.)
+ * - [DOMAIN_NAME] → Your business domain (analytics, ecommerce, administration, healthcare, etc.)
+ * - [BUSINESS_PURPOSE] → Your business purpose (data visualization, online shopping, system management, etc.)
+ * - [UI_LAYOUT_COMPONENT] → Your specific LegoUX layout component (Grid, Container, Sidebar, Header, etc.)
+ * - [LOCAL_DIRECTORY_PATH] → Your local LegoUX path (./src/legoux, ./components/legoux, ./lib/legoux, etc.)
+ * - [LEGOUX_TAG] → Your LegoUX version/tag (v2.1.0, stable, latest, layout-v1, etc.)
+ * - [COMPANY_NAME] → Your company name (TechCorp, DesignSystems, LayoutCompany, etc.)
+ * - [LAYOUT_TYPE] → Your layout type (dashboard, marketing, application, admin, etc.)
+ * 
+ * LEGOUX LAYOUT-SPECIFIC DESIGN CUSTOMIZATIONS:
+ * - Identify your specific layout requirements and responsive breakpoints for targeted implementation
+ * - Define your content organization needs and hierarchy for optimal layout structure
+ * - Specify your device support requirements and responsive behavior for cross-platform consistency
+ * - Configure your accessibility requirements and semantic structure for inclusive layout design
+ * - Set up your performance requirements and rendering optimization for smooth layout transitions
+ * - Define your customization needs and theming requirements for brand-consistent layouts
+ * - Specify your testing requirements and validation strategies for reliable responsive behavior
+ * - Configure your documentation needs and team collaboration for layout pattern sharing
+ * 
+ * The more specific your layout requirements and [DOMAIN_NAME] responsive needs, the more targeted and effective the LegoUX layout implementation will be!
+ */
