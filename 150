@@ -1,0 +1,104 @@
+CONTEXT:
+  domain: "Performance Testing Framework"
+  purpose: "Direct Java Service Layer Testing without HTTP overhead"
+  scale:
+    concurrent_users: "1000-10000"
+    target_tps: "50000+ transactions/second"
+    test_duration: "Configurable (5min - 24hrs)"
+  constraints:
+    - "Zero network latency interference"
+    - "Direct JVM method invocation"
+    - "Accurate service layer performance metrics"
+    - "Memory-efficient test execution"
+  integration:
+    - "Spring Boot 3.2.x service layer"
+    - "JMeter DSL for programmatic test creation"
+    - "JSR223 Sampler for Java method invocation"
+    - "Real-time metrics collection"
+
+REQUIREMENTS:
+  functional:
+    - "Direct Java method invocation without HTTP"
+    - "Support for dependency injection"
+    - "Transaction boundary testing"
+    - "Async method testing support"
+    - "Database connection pool testing"
+  non_functional:
+    - "Test execution overhead < 1% of service time"
+    - "Memory footprint < 500MB for test framework"
+    - "Real-time metrics with < 1ms latency"
+    - "Support for 10000+ concurrent threads"
+    - "Accurate percentile calculations (P50, P95, P99, P99.9)"
+
+ARCHITECTURE:
+  pattern: "Test Harness with Direct Invocation"
+  layers:
+    test_orchestration:
+      - "JMeter DSL test plan builder"
+      - "Thread group configuration"
+      - "Ramp-up strategies"
+    invocation_layer:
+      - "JSR223 Sampler with Groovy/Java"
+      - "Spring context integration"
+      - "Bean lookup and caching"
+    metrics_collection:
+      - "Response time collectors"
+      - "Throughput calculators"
+      - "Error rate monitors"
+      - "JVM metrics (heap, GC, threads)"
+    reporting:
+      - "Real-time dashboards"
+      - "HTML reports"
+      - "CSV exports"
+      - "Grafana integration"
+
+FRAMEWORK:
+  core_technologies:
+    jmeter_dsl: "3.0+"
+    java: "17+"
+    spring_boot: "3.2.x"
+    groovy: "4.0+" 
+  testing_libraries:
+    - "JMeter DSL Core"
+    - "JMeter JSR223 Sampler"
+    - "Spring Test Context"
+    - "Micrometer for metrics"
+  monitoring:
+    - "JMX for JVM monitoring"
+    - "Custom performance counters"
+    - "Thread dump analysis"
+
+TECHNOLOGY:
+  implementation_details:
+    - "Lazy Spring context initialization"
+    - "Bean caching for performance"
+    - "Thread-safe service invocation"
+    - "Connection pool monitoring"
+    - "Transaction isolation testing"
+  algorithms:
+    - "Coordinated omission compensation"
+    - "HDR Histogram for latency"
+    - "Little's Law validation"
+
+TESTING:
+  coverage_targets:
+    unit_tests: "98% of test framework code"
+    integration_tests: "All Spring context scenarios"
+    performance_validation: "Framework overhead < 1%"
+    stress_testing: "10000+ concurrent threads"
+  validation:
+    - "Verify direct invocation vs HTTP equivalence"
+    - "Memory leak detection"
+    - "Thread safety verification"
+
+PERSONA:
+  expertise: "Principal Performance Engineer"
+  experience: "15+ years in JVM performance testing"
+  specialization: "Service layer optimization, JMeter expertise"
+
+ORIGINALITY:
+  unique_aspects:
+    - "Zero-overhead service testing"
+    - "Smart bean caching strategy"
+    - "Automatic Spring context optimization"
+    - "Real-time coordinated omission detection"
