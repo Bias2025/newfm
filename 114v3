@@ -1,0 +1,142 @@
+CONTEXT:
+  domain: Environmental Monitoring & Compliance
+  system_type: Real-Time Sensor Data Pipeline (RTSDP)
+  security_layer: Spring Security + OAuth2/OIDC
+  compliance: EPA, ISO 14001, GDPR (public data), NERC CIP
+  scale_metrics:
+    - 10K sensor stations
+    - 1M+ data points/minute
+    - Sub-50ms ingestion latency
+    - 50K API requests/second
+  integration_points:
+    - IoT Sensor Networks
+    - EPA Regulatory Systems
+    - Public Data Portal
+    - Alert Management Systems
+  existing_infrastructure:
+    - Spring Boot 3.2.x microservices
+    - PostgreSQL 15 with TimescaleDB
+    - Apache Kafka 3.6
+    - Kubernetes orchestration
+  team_composition:
+    - 5 Principal Engineers (15+ years)
+    - 10 Senior Engineers (8+ years)
+    - Domain experts in environmental science
+    REQUIREMENTS:
+  functional:
+    - Real-time data ingestion from 10K sensors
+    - Time-series data storage with 5-year retention
+    - Anomaly detection with ML models
+    - Automated EPA compliance reporting
+    - Public data portal with rate limiting
+    - GTFS/GTFS-RT compliance for transit integration
+    - Accessibility features (WCAG 2.1 AA)
+  non_functional:
+    performance:
+      - P99 latency < 50ms for API responses
+      - 99.99% availability
+      - Zero data loss guarantee
+      - Backpressure handling at 2x capacity
+    security:
+      - End-to-end encryption
+      - API key management with rotation
+      - Rate limiting per app/client
+      - Audit trail with CDC
+    scalability:
+      - Horizontal scaling to 100+ pods
+      - Auto-scaling based on load
+      - Graceful degradation under stress
+      ARCHITECTURE:
+  pattern: Lambda Architecture with CQRS
+  style: Microservices with Event Sourcing
+  layers:
+    presentation:
+      - React 18 with TypeScript
+      - GraphQL Federation
+      - WebSocket for real-time updates
+    application:
+      - Spring Boot 3.2.x services
+      - Spring Cloud Stream for events
+      - Spring Cloud Gateway for routing
+    domain:
+      - Sensor data aggregation
+      - Anomaly detection algorithms
+      - Compliance rule engine
+    infrastructure:
+      - TimescaleDB for time-series
+      - Redis for caching/sessions
+      - Kafka for event streaming
+  data_flow:
+    - Sensors → IoT Gateway → Kafka → Stream Processing → TimescaleDB
+    - API Gateway → Spring Services → PostgreSQL/Redis
+    - Batch: Spark Jobs → Data Lake → Reporting
+    FRAMEWORK:
+  core:
+    language: Java 17
+    framework: Spring Boot 3.2.x
+    reactive: Spring WebFlux
+  data:
+    timeseries: TimescaleDB 2.13+
+    relational: PostgreSQL 15+
+    cache: Redis 7.2 with Redisson
+    search: Elasticsearch 8.11
+  streaming:
+    platform: Apache Kafka 3.6+
+    processing: Kafka Streams + Spring Cloud Stream
+    schema: Avro with Schema Registry
+  api:
+    gateway: Spring Cloud Gateway 4.1
+    documentation: OpenAPI 3.1
+    graphql: Spring GraphQL with Federation
+    TECHNOLOGY:
+  deployment:
+    orchestration: Kubernetes 1.28+
+    service_mesh: Linkerd (lightweight)
+    ci_cd: GitLab CI with ArgoCD
+  monitoring:
+    metrics: Prometheus + Grafana
+    tracing: Jaeger with OpenTelemetry
+    logging: ELK Stack with Filebeat
+    alerting: PagerDuty integration
+  security:
+    secrets: HashiCorp Vault
+    scanning: Snyk + SonarQube
+    runtime: Falco for anomaly detection
+  ml_ops:
+    platform: Kubeflow
+    models: TensorFlow Serving
+    feature_store: Feast
+    TESTING:
+  coverage_target: 98%
+  unit_tests:
+    framework: JUnit 5.10
+    mocking: Mockito 5.0.0
+    assertions: AssertJ
+    coverage: 99.2%
+  integration_tests:
+    containers: TestContainers 1.19
+    databases: PostgreSQL, Redis, Kafka
+    coverage: 97.8%
+  performance_tests:
+    load: JMeter with 50K RPS scenarios
+    stress: Gatling for spike testing
+    chaos: Chaos Monkey for resilience
+  security_tests:
+    sast: SonarQube with quality gates
+    dast: OWASP ZAP automated scans
+    dependencies: Snyk vulnerability scanning
+  mutation_testing:
+    framework: PITest
+    score: 96.2%
+    PERSONA:
+  expertise_level: Distinguished Engineer Consortium
+  collective_experience:
+    - 500+ years combined Java/Spring expertise
+    - 200+ years environmental monitoring systems
+    - 150+ years time-series data optimization
+    - 100+ years EPA compliance implementation
+    - 80+ years high-throughput data pipelines
+  domain_knowledge:
+    - Former architects from NOAA, EPA, NASA
+    - Environmental science PhD contributors
+    - Real-time systems from Bloomberg, Reuters
