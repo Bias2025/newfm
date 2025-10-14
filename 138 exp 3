@@ -1,0 +1,1991 @@
+CRAFT-TPO METHODOLOGY INTEGRATION
+C - CONTEXT
+Define the operational environment before generation:
+
+Domain: Specify business domain (e-commerce, fintech, healthcare, logistics)
+Scale: Concurrent users, requests per second, data volume, geographic distribution
+Latency Requirements: P50, P95, P99 response times in milliseconds
+Regulatory Constraints: GDPR, HIPAA, PCI-DSS, SOC2 compliance needs
+Team Composition: Team size, expertise level, DevOps maturity
+Integration Landscape: Existing systems, APIs, message brokers, data sources
+R - REQUIREMENTS
+Functional Requirements (What the system must do):
+
+Business capabilities with acceptance criteria
+API contracts and data models
+Integration points and protocols
+User workflows and business rules
+Non-Functional Requirements (How well it must perform):
+
+Performance: Throughput (RPS), latency (ms), concurrent users
+Scalability: Horizontal scaling factor, auto-scaling triggers
+Reliability: Uptime SLA (99.9%, 99.99%), MTTR, MTBF
+Security: Authentication methods, authorization model, encryption standards
+Observability: Logging level, metrics collection, tracing requirements
+A - ARCHITECTURE
+Architectural Pattern Selection:
+
+Hexagonal Architecture (Ports & Adapters)
+Clean Architecture (Domain-centric)
+Event-Driven Architecture
+CQRS (Command Query Responsibility Segregation)
+
+Presentation Layer:
+  - REST Controllers (Spring MVC)
+  - GraphQL Resolvers (Spring GraphQL)
+  - gRPC Services
+  - WebSocket Handlers
+
+Application Layer:
+  - Use Cases / Application Services
+  - Command Handlers
+  - Query Handlers
+  - Event Handlers
+
+Domain Layer:
+  - Entities
+  - Value Objects
+  - Domain Services
+  - Repository Interfaces
+  - Domain Events
+
+Infrastructure Layer:
+  - Repository Implementations
+  - External API Clients
+  - Message Publishers/Consumers
+  - Caching Implementations
+
+Data Flow Patterns:
+
+Synchronous: REST, gRPC
+Asynchronous: Kafka, RabbitMQ, AWS SQS
+Event Sourcing: Event Store
+CQRS: Separate read/write models
+F - FRAMEWORK
+Technology Stack Specification:
+
+Core Framework:
+
+Java 17+ (LTS with Virtual Threads support)
+Spring Boot 3.2.x
+Spring Framework 6.x
+Data Persistence:
+
+PostgreSQL 15+ with advanced features:
+JSONB for semi-structured data
+CTEs (Common Table Expressions) for complex queries
+Window functions for analytics
+Partial indexes for optimization
+Full-text search with GIN indexes
+Spring Data JPA with Hibernate 6.x
+Flyway or Liquibase for migrations
+Caching Strategy:
+
+Redis 7+ for distributed caching
+Caffeine for local caching
+Multi-tier caching architecture
+Cache-aside pattern with TTL management
+Messaging & Events:
+
+Apache Kafka for event streaming
+RabbitMQ for traditional messaging
+Spring Cloud Stream for abstraction
+Observability Stack:
+
+Micrometer for metrics
+Prometheus for metrics collection
+Grafana for visualization
+OpenTelemetry for distributed tracing
+ELK Stack (Elasticsearch, Logstash, Kibana) for log aggregation
+Zipkin or Jaeger for trace visualization
+Security Framework:
+
+Spring Security 6.x
+OAuth 2.1 / OpenID Connect
+JWT token management
+mTLS for service-to-service
+T - TECHNOLOGY
+Implementation Technologies:
+
+Algorithms & Data Structures:
+
+Optimal complexity selection (O(1), O(log n), O(n))
+Concurrent data structures (ConcurrentHashMap, CopyOnWriteArrayList)
+Bloom filters for existence checks
+Circuit breakers (Resilience4j)
+Deployment Platform:
+
+Kubernetes 1.28+
+Docker containerization
+Helm charts for package management
+Service mesh (Istio/Linkerd) optional
+CI/CD Pipeline:
+
+Jenkins / GitLab CI / GitHub Actions
+SonarQube for code quality gates
+OWASP Dependency Check
+Container scanning (Trivy, Clair)
+Automated testing stages
+Infrastructure as Code:
+
+Terraform for cloud resources
+Ansible for configuration management
+Kubernetes manifests / Helm charts
+T - TESTING
+Comprehensive Testing Strategy (98% Minimum Coverage):
+
+Unit Tests (70% of total coverage):
+
+JUnit 5 (Jupiter)
+Mockito for mocking
+AssertJ for fluent assertions
+Mutation testing with PIT (95% mutation score)
+Integration Tests (20% of total coverage):
+
+TestContainers for real dependencies
+Spring Boot Test with @SpringBootTest
+REST Assured for API testing
+Database integration with real PostgreSQL
+Performance Tests (5% of total coverage):
+
+JMeter for load testing
+Gatling for scenario-based testing
+Target: P95 latency, sustained throughput
+Security Tests (5% of total coverage):
+
+OWASP ZAP for vulnerability scanning
+SonarQube security hotspots
+Dependency vulnerability checks
+Contract Tests:
+
+Spring Cloud Contract
+Pact for consumer-driven contracts
+P - PERSONA
+Code Generation Persona:
+
+Experience Level: Principal Engineer / Distinguished Engineer
+Domain Expertise: 15+ years in specific domain (fintech, healthcare, etc.)
+Architecture Knowledge: Enterprise patterns, distributed systems, cloud-native
+Quality Standards: Zero-defect mindset, performance-obsessed, security-first
+Code Philosophy: Clean Code, SOLID principles, Domain-Driven Design
+O - ORIGINALITY
+Unique Implementation Aspects:
+
+Custom optimization strategies specific to domain
+Novel caching patterns for use case
+Advanced PostgreSQL features utilization
+Reactive programming where beneficial
+Custom Spring Boot starters for reusability
+Domain-specific DSLs for business logic
+
+Factor 1: Codebase
+One codebase tracked in revision control, many deploys
+
+Implementation:
+
+yaml
+
+repository_structure:
+  type: "Git monorepo or polyrepo"
+  branching_strategy: "GitFlow or Trunk-based"
+  branches:
+    - main (production)
+    - staging
+    - develop
+    - feature/* (short-lived)
+  
+git_configuration:
+  .gitignore:
+    - target/
+    - *.class
+    - .env
+    - application-local.yml
+  
+  .gitattributes:
+    - "* text=auto"
+    - "*.java text eol=lf"
+Code Generation:
+
+java
+
+// Git metadata accessible in application
+@Component
+public class BuildInfoProvider {
+    @Value("${git.commit.id.abbrev}")
+    private String gitCommit;
+    
+    @Value("${git.branch}")
+    private String gitBranch;
+    
+    @Value("${git.build.time}")
+    private String buildTime;
+    
+    public Map<String, String> getBuildInfo() {
+        return Map.of(
+            "commit", gitCommit,
+            "branch", gitBranch,
+            "buildTime", buildTime
+        );
+    }
+}
+Maven Plugin:
+
+xml
+
+<plugin>
+    <groupId>pl.project13.maven</groupId>
+    <artifactId>git-commit-id-plugin</artifactId>
+    <version>4.9.10</version>
+</plugin>
+Factor 2: Dependencies
+Explicitly declare and isolate dependencies
+
+Implementation:
+
+xml
+
+<!-- pom.xml with explicit dependency management -->
+<project>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.0</version>
+    </parent>
+    
+    <properties>
+        <java.version>17</java.version>
+        <postgresql.version>42.7.1</postgresql.version>
+        <testcontainers.version>1.19.3</testcontainers.version>
+    </properties>
+    
+    <dependencies>
+        <!-- Core Spring Boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        
+        <!-- Database -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        
+        <!-- Caching -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        
+        <!-- Observability -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+        
+        <!-- Security -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+        </dependency>
+        
+        <!-- Testing -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${testcontainers.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+Dependency Isolation:
+
+java
+
+// No system-level dependencies
+// All dependencies declared in build file
+// Reproducible builds guaranteed
+Factor 3: Config
+Store config in the environment
+
+Implementation:
+
+yaml
+
+# application.yml (defaults only, no secrets)
+spring:
+  application:
+    name: ${SERVICE_NAME:order-service}
+  
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/orders}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD}
+    hikari:
+      maximum-pool-size: ${DB_POOL_SIZE:20}
+      minimum-idle: ${DB_POOL_MIN_IDLE:5}
+      connection-timeout: ${DB_CONNECTION_TIMEOUT:30000}
+  
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:}
+    timeout: ${REDIS_TIMEOUT:2000}
+  
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    consumer:
+      group-id: ${KAFKA_CONSUMER_GROUP:order-service}
+    producer:
+      acks: ${KAFKA_PRODUCER_ACKS:all}
+  
+server:
+  port: ${PORT:8080}
+  shutdown: graceful
+  
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+logging:
+  level:
+    root: ${LOG_LEVEL:INFO}
+    com.company: ${APP_LOG_LEVEL:DEBUG}
+Type-Safe Configuration:
+
+java
+
+@Configuration
+@ConfigurationProperties(prefix = "app")
+@Validated
+public class ApplicationConfig {
+    
+    @NotNull
+    @Min(1)
+    @Max(3600)
+    private Integer cacheTimeoutSeconds;
+    
+    @NotBlank
+    private String apiKey;
+    
+    @Valid
+    private DatabaseConfig database;
+    
+    @Valid
+    private SecurityConfig security;
+    
+    // Getters and setters
+    
+    public static class DatabaseConfig {
+        @Min(1)
+        @Max(100)
+        private Integer maxConnections = 20;
+        
+        @Min(100)
+        @Max(60000)
+        private Integer queryTimeoutMs = 5000;
+        
+        // Getters and setters
+    }
+    
+    public static class SecurityConfig {
+        @NotBlank
+        private String jwtSecret;
+        
+        @Min(300)
+        @Max(86400)
+        private Integer tokenExpirySeconds = 3600;
+        
+        // Getters and setters
+    }
+}
+Environment-Specific Profiles:
+
+yaml
+
+# application-dev.yml
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+# application-prod.yml
+spring:
+  jpa:
+    show-sql: false
+  datasource:
+    hikari:
+      maximum-pool-size: 50
+Factor 4: Backing Services
+Treat backing services as attached resources
+
+Implementation:
+
+java
+
+@Configuration
+public class BackingServicesConfig {
+    
+    /**
+     * PostgreSQL as attached resource
+     * Configured entirely from environment
+     */
+    @Bean
+    @ConfigurationProperties(prefix = "spring.datasource.hikari")
+    public HikariConfig hikariConfig() {
+        return new HikariConfig();
+    }
+    
+    @Bean
+    public DataSource dataSource(
+        @Value("${DATABASE_URL}") String jdbcUrl,
+        @Value("${DATABASE_USERNAME}") String username,
+        @Value("${DATABASE_PASSWORD}") String password,
+        HikariConfig hikariConfig
+    ) {
+        hikariConfig.setJdbcUrl(jdbcUrl);
+        hikariConfig.setUsername(username);
+        hikariConfig.setPassword(password);
+        
+        // Connection pool optimization
+        hikariConfig.setMaximumPoolSize(20);
+        hikariConfig.setMinimumIdle(5);
+        hikariConfig.setConnectionTimeout(30000);
+        hikariConfig.setIdleTimeout(600000);
+        hikariConfig.setMaxLifetime(1800000);
+        
+        // Performance tuning
+        hikariConfig.addDataSourceProperty("cachePrepStmts", "true");
+        hikariConfig.addDataSourceProperty("prepStmtCacheSize", "250");
+        hikariConfig.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+        
+        return new HikariDataSource(hikariConfig);
+    }
+    
+    /**
+     * Redis as attached resource
+     */
+    @Bean
+    public RedisConnectionFactory redisConnectionFactory(
+        @Value("${REDIS_URL:redis://localhost:6379}") String redisUrl
+    ) {
+        RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
+        // Parse Redis URL and configure
+        return new LettuceConnectionFactory(config);
+    }
+    
+    /**
+     * Kafka as attached resource
+     */
+    @Bean
+    public ProducerFactory<String, Object> producerFactory(
+        @Value("${KAFKA_BOOTSTRAP_SERVERS}") String bootstrapServers
+    ) {
+        Map<String, Object> config = new HashMap<>();
+        config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
+        config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+        config.put(ProducerConfig.ACKS_CONFIG, "all");
+        config.put(ProducerConfig.RETRIES_CONFIG, 3);
+        return new DefaultKafkaProducerFactory<>(config);
+    }
+}
+
+/**
+ * Health checks for all backing services
+ */
+@Component
+public class BackingServicesHealthIndicator implements HealthIndicator {
+    
+    private final DataSource dataSource;
+    private final RedisConnectionFactory redisFactory;
+    
+    @Override
+    public Health health() {
+        Health.Builder builder = new Health.Builder();
+        
+        // Check database
+        try (Connection conn = dataSource.getConnection()) {
+            builder.up().withDetail("database", "available");
+        } catch (Exception e) {
+            builder.down().withDetail("database", "unavailable");
+        }
+        
+        // Check Redis
+        try {
+            redisFactory.getConnection().ping();
+            builder.up().withDetail("redis", "available");
+        } catch (Exception e) {
+            builder.down().withDetail("redis", "unavailable");
+        }
+        
+        return builder.build();
+    }
+}
+Resource Swapping:
+
+bash
+
+# Development
+export DATABASE_URL=jdbc:postgresql://localhost:5432/dev_db
+
+# Staging
+export DATABASE_URL=jdbc:postgresql://staging-db.internal:5432/staging_db
+
+# Production
+export DATABASE_URL=jdbc:postgresql://prod-db-cluster.internal:5432/prod_db
+Factor 5: Build, Release, Run
+Strictly separate build and run stages
+
+Multi-Stage Dockerfile:
+
+dockerfile
+
+# ============================================
+# BUILD STAGE
+# ============================================
+FROM maven:3.9-eclipse-temurin-17-alpine AS build
+
+WORKDIR /build
+
+# Copy dependency definitions
+COPY pom.xml .
+COPY .mvn .mvn
+
+# Download dependencies (cached layer)
+RUN mvn dependency:go-offline -B
+
+# Copy source code
+COPY src ./src
+
+# Build application
+RUN mvn clean package -DskipTests -B && \
+    mv target/*.jar app.jar
+
+# ============================================
+# RELEASE STAGE (optional - for artifact storage)
+# ============================================
+FROM build AS release
+
+# Extract layers for optimal caching
+RUN java -Djarmode=layertools -jar app.jar extract
+
+# ============================================
+# RUN STAGE
+# ============================================
+FROM eclipse-temurin:17-jre-alpine AS runtime
+
+# Security: Run as non-root user
+RUN addgroup -g 1001 appgroup && \
+    adduser -D -u 1001 -G appgroup appuser
+
+WORKDIR /app
+
+# Copy from release stage
+COPY --from=release --chown=appuser:appgroup /build/dependencies/ ./
+COPY --from=release --chown=appuser:appgroup /build/spring-boot-loader/ ./
+COPY --from=release --chown=appuser:appgroup /build/snapshot-dependencies/ ./
+COPY --from=release --chown=appuser:appgroup /build/application/ ./
+
+# Switch to non-root user
+USER appuser
+
+# Expose port from environment
+EXPOSE ${PORT:-8080}
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:${PORT:-8080}/actuator/health || exit 1
+
+# Run application
+ENTRYPOINT ["java", \
+    "-XX:+UseContainerSupport", \
+    "-XX:MaxRAMPercentage=75.0", \
+    "-XX:+UseG1GC", \
+    "-Djava.security.egd=file:/dev/./urandom", \
+    "org.springframework.boot.loader.JarLauncher"]
+CI/CD Pipeline (GitHub Actions example):
+
+yaml
+
+name: Build-Release-Deploy
+
+on:
+  push:
+    branches: [main, develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+      
+      - name: Build with Maven
+        run: mvn clean package -B
+      
+      - name: Run tests
+        run: mvn test -B
+      
+      - name: SonarQube Scan
+        run: mvn sonar:sonar -Dsonar.projectKey=order-service
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-jar
+          path: target/*.jar
+  
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+      
+      - name: Build Docker image
+        run: |
+          docker build -t order-service:${{ github.sha }} .
+          docker tag order-service:${{ github.sha }} order-service:latest
+      
+      - name: Push to registry
+        run: |
+          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+          docker push order-service:${{ github.sha }}
+          docker push order-service:latest
+  
+  deploy:
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl set image deployment/order-service \
+            order-service=order-service:${{ github.sha }} \
+            --record
+Factor 6: Processes
+Execute the app as one or more stateless processes
+
+Implementation:
+
+java
+
+/**
+ * Stateless service design
+ * No in-memory session state
+ * All state externalized to backing services
+ */
+@Service
+@Transactional(readOnly = true)
+public class OrderService {
+    
+    private final OrderRepository orderRepository;
+    private final RedisTemplate<String, Order> redisTemplate;
+    private final KafkaTemplate<String, OrderEvent> kafkaTemplate;
+    
+    /**
+     * No instance variables holding state
+     * Each request is independent
+     */
+    public Order processOrder(CreateOrderRequest request) {
+        // 1. Create order (state in database)
+        Order order = orderRepository.save(
+            Order.builder()
+                .customerId(request.getCustomerId())
+                .items(request.getItems())
+                .status(OrderStatus.PENDING)
+                .build()
+        );
+        
+        // 2. Cache for fast retrieval (state in Redis)
+        String cacheKey = "order:" + order.getId();
+        redisTemplate.opsForValue().set(
+            cacheKey, 
+            order, 
+            Duration.ofMinutes(30)
+        );
+        
+        // 3. Publish event (asynchronous processing)
+        kafkaTemplate.send(
+            "order-events",
+            order.getId().toString(),
+            OrderEvent.created(order)
+        );
+        
+        return order;
+    }
+    
+    /**
+     * Session data stored in Redis, not in-memory
+     */
+    public void updateUserSession(String userId, Map<String, Object> sessionData) {
+        String sessionKey = "session:" + userId;
+        redisTemplate.opsForHash().putAll(sessionKey, sessionData);
+        redisTemplate.expire(sessionKey, Duration.ofHours(2));
+    }
+}
+
+/**
+ * Configuration for stateless operation
+ */
+@Configuration
+public class StatelessConfig {
+    
+    /**
+     * Disable HTTP sessions
+     */
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        return http
+            .sessionManagement(session -> 
+                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            )
+            .build();
+    }
+    
+    /**
+     * Share state via Redis for multi-instance deployment
+     */
+    @Bean
+    public RedisTemplate<String, Object> redisTemplate(
+        RedisConnectionFactory connectionFactory
+    ) {
+        RedisTemplate<String, Object> template = new RedisTemplate<>();
+        template.setConnectionFactory(connectionFactory);
+        template.setKeySerializer(new StringRedisSerializer());
+        template.setValueSerializer(new GenericJackson2JsonRedisSerializer());
+        return template;
+    }
+}
+Horizontal Scaling Configuration:
+
+yaml
+
+# Kubernetes Deployment - multiple stateless replicas
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-service
+spec:
+  replicas: 5  # Stateless, can scale freely
+  selector:
+    matchLabels:
+      app: order-service
+  template:
+    metadata:
+      labels:
+        app: order-service
+    spec:
+      containers:
+      - name: order-service
+        image: order-service:latest
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
+Factor 7: Port Binding
+Export services via port binding
+
+Implementation:
+
+java
+
+/**
+ * Self-contained service with embedded server
+ * No external web server required
+ */
+@SpringBootApplication
+public class OrderServiceApplication {
+    
+    public static void main(String[] args) {
+        SpringApplication app = new SpringApplication(OrderServiceApplication.class);
+        
+        // Port from environment
+        String port = System.getenv().getOrDefault("PORT", "8080");
+        app.setDefaultProperties(Map.of("server.port", port));
+        
+        app.run(args);
+    }
+}
+
+/**
+ * Server configuration
+ */
+@Configuration
+public class ServerConfig {
+    
+    @Bean
+    public WebServerFactoryCustomizer<ConfigurableWebServerFactory> 
+        webServerFactoryCustomizer() {
+        return factory -> {
+            // Port binding from environment
+            String port = System.getenv().getOrDefault("PORT", "8080");
+            factory.setPort(Integer.parseInt(port));
+            
+            // Graceful shutdown
+            factory.setShutdown(Shutdown.GRACEFUL);
+        };
+    }
+}
+
+/**
+ * Multiple protocols on different ports
+ */
+@Configuration
+public class MultiProtocolConfig {
+    
+    /**
+     * HTTP REST API on main port
+     */
+    @Bean
+    public RouterFunction<ServerResponse> httpRoutes(OrderHandler handler) {
+        return route()
+            .GET("/api/orders", handler::listOrders)
+            .POST("/api/orders", handler::createOrder)
+            .build();
+    }
+    
+    /**
+     * gRPC on separate port (if needed)
+     */
+    @Bean
+    public GrpcServerConfigurer grpcServerConfigurer() {
+        return serverBuilder -> {
+            String grpcPort = System.getenv().getOrDefault("GRPC_PORT", "9090");
+            serverBuilder.port(Integer.parseInt(grpcPort));
+        };
+    }
+    
+    /**
+     * Management/metrics on separate port
+     */
+    @Bean
+    public ManagementServerProperties managementServerProperties() {
+        ManagementServerProperties props = new ManagementServerProperties();
+        String mgmtPort = System.getenv().getOrDefault("MANAGEMENT_PORT", "8081");
+        props.setPort(Integer.parseInt(mgmtPort));
+        return props;
+    }
+}
+Service Exposure:
+
+yaml
+
+# application.yml
+server:
+  port: ${PORT:8080}
+  shutdown: graceful
+  
+management:
+  server:
+    port: ${MANAGEMENT_PORT:8081}
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: health,info,metrics,prometheus
+
+# Kubernetes Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-service
+spec:
+  type: ClusterIP
+  selector:
+    app: order-service
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080
+  - name: management
+    port: 8081
+    targetPort: 8081
+Factor 8: Concurrency
+Scale out via the process model
+
+Implementation:
+
+java
+
+/**
+ * Async processing configuration
+ */
+@Configuration
+@EnableAsync
+public class ConcurrencyConfig {
+    
+    /**
+     * Thread pool for async operations
+     */
+    @Bean(name = "taskExecutor")
+    public ThreadPoolTaskExecutor taskExecutor() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        
+        // Scale based on CPU cores
+        int cores = Runtime.getRuntime().availableProcessors();
+        executor.setCorePoolSize(cores * 2);
+        executor.setMaxPoolSize(cores * 4);
+        executor.setQueueCapacity(100);
+        executor.setThreadNamePrefix("async-");
+        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+        executor.initialize();
+        
+        return executor;
+    }
+    
+    /**
+     * Kafka listener concurrency
+     */
+    @Bean
+    public ConcurrentKafkaListenerContainerFactory<String, OrderEvent> 
+        kafkaListenerContainerFactory(ConsumerFactory<String, OrderEvent> consumerFactory) {
+        
+        ConcurrentKafkaListenerContainerFactory<String, OrderEvent> factory =
+            new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(consumerFactory);
+        
+        // Concurrent consumers for parallel processing
+        factory.setConcurrency(3);
+        
+        return factory;
+    }
+}
+
+/**
+ * Async service methods
+ */
+@Service
+public class NotificationService {
+    
+    @Async("taskExecutor")
+    public CompletableFuture<Void> sendEmailNotification(Order order) {
+        // Non-blocking email sending
+        return CompletableFuture.runAsync(() -> {
+            // Email logic
+        });
+    }
+    
+    @Async("taskExecutor")
+    public CompletableFuture<Void> sendSmsNotification(Order order) {
+        // Non-blocking SMS sending
+        return CompletableFuture.runAsync(() -> {
+            // SMS logic
+        });
+    }
+    
+    /**
+     * Parallel execution of multiple async operations
+     */
+    public void notifyCustomer(Order order) {
+        CompletableFuture<Void> emailFuture = sendEmailNotification(order);
+        CompletableFuture<Void> smsFuture = sendSmsNotification(order);
+        
+        // Wait for both to complete
+        CompletableFuture.allOf(emailFuture, smsFuture).join();
+    }
+}
+
+/**
+ * Event-driven concurrency with Kafka
+ */
+@Component
+public class OrderEventConsumer {
+    
+    /**
+     * Multiple concurrent consumers processing events
+     */
+    @KafkaListener(
+        topics = "order-events",
+        groupId = "order-processor",
+        concurrency = "3"  // 3 concurrent consumers
+    )
+    public void processOrderEvent(OrderEvent event) {
+        // Process event concurrently
+    }
+}
+
+/**
+ * Reactive programming for high concurrency
+ */
+@Service
+public class ReactiveOrderService {
+    
+    private final WebClient webClient;
+    
+    /**
+     * Non-blocking reactive calls
+     */
+    public Mono<Order> enrichOrder(Order order) {
+        return webClient
+            .get()
+            .uri("/customers/{id}", order.getCustomerId())
+            .retrieve()
+            .bodyToMono(Customer.class)
+            .map(customer -> order.withCustomerDetails(customer));
+    }
+    
+    /**
+     * Parallel reactive processing
+     */
+    public Flux<Order> processOrders(List<String> orderIds) {
+        return Flux.fromIterable(orderIds)
+            .flatMap(this::fetchOrder, 10)  // 10 concurrent requests
+            .flatMap(this::enrichOrder);
+    }
+}
+Horizontal Pod Autoscaling:
+
+yaml
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: order-service-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: order-service
+  minReplicas: 3
+  maxReplicas: 20
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+      - type: Percent
+        value: 50
+        periodSeconds: 60
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies:
+      - type: Percent
+        value: 100
+        periodSeconds: 30
+      - type: Pods
+        value: 4
+        periodSeconds: 30
+Factor 9: Disposability
+Maximize robustness with fast startup and graceful shutdown
+
+Implementation:
+
+java
+
+/**
+ * Fast startup optimization
+ */
+@SpringBootApplication
+public class OrderServiceApplication {
+    
+    public static void main(String[] args) {
+        SpringApplication app = new SpringApplication(OrderServiceApplication.class);
+        
+        // Lazy initialization for faster startup
+        app.setLazyInitialization(true);
+        
+        app.run(args);
+    }
+}
+
+/**
+ * Graceful shutdown configuration
+ */
+@Configuration
+public class ShutdownConfig {
+    
+    @Bean
+    public GracefulShutdown gracefulShutdown() {
+        return new GracefulShutdown();
+    }
+    
+    @Bean
+    public ServletWebServerFactory servletContainer(GracefulShutdown gracefulShutdown) {
+        TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();
+        factory.addConnectorCustomizers(gracefulShutdown);
+        return factory;
+    }
+}
+
+/**
+ * Custom graceful shutdown handler
+ */
+public class GracefulShutdown implements TomcatConnectorCustomizer, 
+    ApplicationListener<ContextClosedEvent> {
+    
+    private static final Logger log = LoggerFactory.getLogger(GracefulShutdown.class);
+    private volatile Connector connector;
+    
+    @Override
+    public void customize(Connector connector) {
+        this.connector = connector;
+    }
+    
+    @Override
+    public void onApplicationEvent(ContextClosedEvent event) {
+        if (connector == null) {
+            return;
+        }
+        
+        log.info("Initiating graceful shutdown...");
+        
+        // Stop accepting new requests
+        connector.pause();
+        
+        // Wait for existing requests to complete
+        Executor executor = connector.getProtocolHandler().getExecutor();
+        if (executor instanceof ThreadPoolExecutor) {
+            ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) executor;
+            threadPoolExecutor.shutdown();
+            
+            try {
+                if (!threadPoolExecutor.awaitTermination(30, TimeUnit.SECONDS)) {
+                    log.warn("Tomcat thread pool did not shut down gracefully within 30 seconds");
+                    threadPoolExecutor.shutdownNow();
+                }
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                threadPoolExecutor.shutdownNow();
+            }
+        }
+        
+        log.info("Graceful shutdown completed");
+    }
+}
+
+/**
+ * Resource cleanup on shutdown
+ */
+@Component
+public class ResourceCleanupListener {
+    
+    private final DataSource dataSource;
+    private final RedisConnectionFactory redisFactory;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
+    
+    @PreDestroy
+    public void cleanup() {
+        log.info("Cleaning up resources...");
+        
+        // Close database connections
+        if (dataSource instanceof HikariDataSource) {
+            ((HikariDataSource) dataSource).close();
+        }
+        
+        // Close Redis connections
+        if (redisFactory instanceof DisposableBean) {
+            try {
+                ((DisposableBean) redisFactory).destroy();
+            } catch (Exception e) {
+                log.error("Error closing Redis connections", e);
+            }
+        }
+        
+        // Flush Kafka producer
+        kafkaTemplate.flush();
+        
+        log.info("Resource cleanup completed");
+    }
+}
+
+/**
+ * Health check for readiness
+ */
+@Component
+public class StartupHealthIndicator implements HealthIndicator {
+    
+    private volatile boolean ready = false;
+    
+    @EventListener(ApplicationReadyEvent.class)
+    public void onApplicationReady() {
+        ready = true;
+    }
+    
+    @Override
+    public Health health() {
+        return ready ? Health.up().build() : Health.down().build();
+    }
+}
+Application Configuration:
+
+yaml
+
+# application.yml
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+  
+server:
+  shutdown: graceful
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  health:
+    livenessState:
+      enabled: true
+    readinessState:
+      enabled: true
+Kubernetes Probes:
+
+yaml
+
+apiVersion: apps/v1
+kind: Deployment
+spec:
+  template:
+    spec:
+      containers:
+      - name: order-service
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
+        
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
+          initialDelaySeconds: 20
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+        
+        lifecycle:
+          preStop:
+            exec:
+              command: ["sh", "-c", "sleep 15"]
+Factor 10: Dev/Prod Parity
+Keep development, staging, and production as similar as possible
+
+Implementation:
+
+Docker Compose for Local Development:
+
+yaml
+
+version: '3.8'
+
+services:
+  order-service:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - DATABASE_URL=jdbc:postgresql://postgres:5432/orders
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=postgres
+      - REDIS_HOST=redis
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+    depends_on:
+      - postgres
+      - redis
+      - kafka
+  
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: orders
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+  
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+  
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+volumes:
+  postgres-data:
+TestContainers for Integration Tests:
+
+java
+
+@SpringBootTest
+@Testcontainers
+class OrderServiceIntegrationTest {
+    
+    @Container
+    static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:15-alpine")
+        .withDatabaseName("orders")
+        .withUsername("postgres")
+        .withPassword("postgres");
+    
+    @Container
+    static GenericContainer<?> redis = new GenericContainer<>("redis:7-alpine")
+        .withExposedPorts(6379);
+    
+    @Container
+    static KafkaContainer kafka = new KafkaContainer(
+        DockerImageName.parse("confluentinc/cp-kafka:7.5.0")
+    );
+    
+    @DynamicPropertySource
+    static void configureProperties(DynamicPropertyRegistry registry) {
+        // Same configuration as production
+        registry.add("spring.datasource.url", postgres::getJdbcUrl);
+        registry.add("spring.datasource.username", postgres::getUsername);
+        registry.add("spring.datasource.password", postgres::getPassword);
+        
+        registry.add("spring.redis.host", redis::getHost);
+        registry.add("spring.redis.port", redis::getFirstMappedPort);
+        
+        registry.add("spring.kafka.bootstrap-servers", kafka::getBootstrapServers);
+    }
+    
+    @Test
+    void shouldProcessOrderWithRealDependencies() {
+        // Test with real PostgreSQL, Redis, Kafka
+        // Exactly as in production
+    }
+}
+Infrastructure as Code (Terraform):
+
+hcl
+
+# Same infrastructure definition for all environments
+# Only variables change
+
+variable "environment" {
+  type = string
+}
+
+variable "database_instance_class" {
+  type = map(string)
+  default = {
+    dev     = "db.t3.micro"
+    staging = "db.t3.small"
+    prod    = "db.r6g.xlarge"
+  }
+}
+
+resource "aws_db_instance" "postgres" {
+  identifier        = "order-db-${var.environment}"
+  engine            = "postgres"
+  engine_version    = "15.4"
+  instance_class    = var.database_instance_class[var.environment]
+  allocated_storage = 20
+  
+  # Same configuration across environments
+  parameter_group_name = aws_db_parameter_group.postgres.name
+  
+  # Only credentials differ
+  username = var.db_username
+  password = var.db_password
+}
+Continuous Deployment Pipeline:
+
+yaml
+
+# Same deployment process for all environments
+# Only target cluster differs
+
+deploy:
+  stage: deploy
+  script:
+    - kubectl config use-context ${ENVIRONMENT}
+    - helm upgrade --install order-service ./helm \
+        --set image.tag=${CI_COMMIT_SHA} \
+        --set environment=${ENVIRONMENT} \
+        --values values-${ENVIRONMENT}.yaml
+  only:
+    - main
+    - develop
+Factor 11: Logs
+Treat logs as event streams
+
+Implementation:
+
+Structured JSON Logging:
+
+xml
+
+<!-- logback-spring.xml -->
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <!-- Structured JSON output -->
+            <includeMdcKeyName>trace_id</includeMdcKeyName>
+            <includeMdcKeyName>span_id</includeMdcKeyName>
+            <includeMdcKeyName>user_id</includeMdcKeyName>
+            <includeMdcKeyName>request_id</includeMdcKeyName>
+            
+            <customFields>
+                {"service":"order-service","environment":"${ENVIRONMENT}"}</customFields>
+            
+            <fieldNames>
+                <timestamp>@timestamp</timestamp>
+                <message>message</message>
+                <logger>logger</logger>
+                <level>level</level>
+                <thread>thread</thread>
+            </fieldNames>
+        </encoder>
+    </appender>
+    
+    <!-- Only stdout, no file appenders -->
+    <root level="${LOG_LEVEL:-INFO}">
+        <appender-ref ref="CONSOLE" />
+    </root>
+    
+    <!-- Application-specific logging -->
+    <logger name="com.company.orderservice" level="${APP_LOG_LEVEL:-DEBUG}" />
+    
+    <!-- SQL logging for debugging -->
+    <logger name="org.hibernate.SQL" level="${SQL_LOG_LEVEL:-INFO}" />
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="${SQL_LOG_LEVEL:-INFO}" />
+</configuration>
+Logging Service:
+
+java
+
+@Service
+public class StructuredLoggingService {
+    
+    private static final Logger log = LoggerFactory.getLogger(StructuredLoggingService.class);
+    
+    /**
+     * Log with structured context
+     */
+    public void logOrderCreated(Order order) {
+        MDC.put("order_id", order.getId().toString());
+        MDC.put("customer_id", order.getCustomerId().toString());
+        MDC.put("order_total", order.getTotal().toString());
+        
+        log.info("Order created successfully");
+        
+        MDC.clear();
+    }
+    
+    /**
+     * Log with metrics
+     */
+    public void logPerformanceMetric(String operation, long durationMs) {
+        MDC.put("operation", operation);
+        MDC.put("duration_ms", String.valueOf(durationMs));
+        
+        if (durationMs > 1000) {
+            log.warn("Slow operation detected");
+        } else {
+            log.info("Operation completed");
+        }
+        
+        MDC.clear();
+    }
+    
+    /**
+     * Log business events
+     */
+    public void logBusinessEvent(String eventType, Map<String, String> context) {
+        context.forEach(MDC::put);
+        MDC.put("event_type", eventType);
+        
+        log.info("Business event occurred");
+        
+        MDC.clear();
+    }
+}
+
+/**
+ * Request logging filter
+ */
+@Component
+public class RequestLoggingFilter extends OncePerRequestFilter {
+    
+    @Override
+    protected void doFilterInternal(
+        HttpServletRequest request,
+        HttpServletResponse response,
+        FilterChain filterChain
+    ) throws ServletException, IOException {
+        
+        String requestId = UUID.randomUUID().toString();
+        MDC.put("request_id", requestId);
+        MDC.put("method", request.getMethod());
+        MDC.put("path", request.getRequestURI());
+        
+        long startTime = System.currentTimeMillis();
+        
+        try {
+            filterChain.doFilter(request, response);
+        } finally {
+            long duration = System.currentTimeMillis() - startTime;
+            MDC.put("status", String.valueOf(response.getStatus()));
+            MDC.put("duration_ms", String.valueOf(duration));
+            
+            log.info("Request completed");
+            
+            MDC.clear();
+        }
+    }
+}
+Log Aggregation Ready:
+
+yaml
+
+# Fluentd configuration for log collection
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fluentd-config
+data:
+  fluent.conf: |
+    <source>
+      @type tail
+      path /var/log/containers/order-service*.log
+      pos_file /var/log/fluentd-containers.log.pos
+      tag kubernetes.*
+      format json
+      time_key @timestamp
+    </source>
+    
+    <match kubernetes.**>
+      @type elasticsearch
+      host elasticsearch.logging.svc.cluster.local
+      port 9200
+      logstash_format true
+      logstash_prefix order-service
+    </match>
+Application Configuration:
+
+yaml
+
+# application.yml
+logging:
+  level:
+    root: ${LOG_LEVEL:INFO}
+    com.company.orderservice: ${APP_LOG_LEVEL:DEBUG}
+  pattern:
+    console: ""  # Empty because we use JSON encoder
+Factor 12: Admin Processes
+Run admin/management tasks as one-off processes
+
+Implementation:
+
+Database Migration with Flyway:
+
+java
+
+@Configuration
+public class FlywayConfig {
+    
+    @Bean
+    public Flyway flyway(DataSource dataSource) {
+        return Flyway.configure()
+            .dataSource(dataSource)
+            .locations("classpath:db/migration")
+            .baselineOnMigrate(true)
+            .validateOnMigrate(true)
+            .load();
+    }
+    
+    @Bean
+    public FlywayMigrationStrategy flywayMigrationStrategy() {
+        return flyway -> {
+            // Repair if needed
+            flyway.repair();
+            // Migrate
+            flyway.migrate();
+        };
+    }
+}
+Migration Scripts:
+
+sql
+
+-- V1__initial_schema.sql
+CREATE TABLE orders (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    customer_id UUID NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    total DECIMAL(10, 2) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_orders_customer_id ON orders(customer_id);
+CREATE INDEX idx_orders_status ON orders(status);
+CREATE INDEX idx_orders_created_at ON orders(created_at);
+
+-- V2__add_order_items.sql
+CREATE TABLE order_items (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    order_id UUID NOT NULL REFERENCES orders(id),
+    product_id UUID NOT NULL,
+    quantity INTEGER NOT NULL,
+    price DECIMAL(10, 2) NOT NULL
+);
+Admin Command Runner:
+
+java
+
+/**
+ * One-off admin commands
+ */
+@Component
+public class AdminCommandRunner implements CommandLineRunner {
+    
+    private final Environment env;
+    private final DataSource dataSource;
+    
+    @Override
+    public void run(String... args) throws Exception {
+        // Only run admin commands if specified
+        if (Arrays.asList(args).contains("--migrate")) {
+            runMigration();
+        }
+        
+        if (Arrays.asList(args).contains("--seed")) {
+            seedDatabase();
+        }
+        
+        if (Arrays.asList(args).contains("--cleanup")) {
+            cleanupOldData();
+        }
+    }
+    
+    private void runMigration() {
+        log.info("Running database migration...");
+        Flyway flyway = Flyway.configure()
+            .dataSource(dataSource)
+            .load();
+        flyway.migrate();
+        log.info("Migration completed");
+    }
+    
+    private void seedDatabase() {
+        log.info("Seeding database...");
+        // Seeding logic
+        log.info("Seeding completed");
+    }
+    
+    private void cleanupOldData() {
+        log.info("Cleaning up old data...");
+        // Cleanup logic
+        log.info("Cleanup completed");
+    }
+}
+
+/**
+ * Separate admin endpoints
+ */
+@RestController
+@RequestMapping("/admin")
+public class AdminController {
+    
+    private final AdminService adminService;
+    
+    /**
+     * Trigger data export
+     */
+    @PostMapping("/export")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<String> exportData(@RequestParam String format) {
+        String exportId = adminService.initiateExport(format);
+        return ResponseEntity.accepted()
+            .body("Export initiated: " + exportId);
+    }
+    
+    /**
+     * Rebuild search index
+     */
+    @PostMapping("/reindex")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Void> rebuildIndex() {
+        adminService.rebuildSearchIndex();
+        return ResponseEntity.accepted().build();
+    }
+    
+    /**
+     * Database statistics
+     */
+    @GetMapping("/stats")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Map<String, Object>> getDatabaseStats() {
+        return ResponseEntity.ok(adminService.getDatabaseStatistics());
+    }
+}
+Kubernetes Job for Admin Tasks:
+
+yaml
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: order-service-migration
+spec:
+  template:
+    spec:
+      containers:
+      - name: migration
+        image: order-service:latest
+        command: ["java", "-jar", "app.jar", "--migrate"]
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: database-credentials
+              key: url
+        - name: DATABASE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: database-credentials
+              key: username
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: database-credentials
+              key: password
+      restartPolicy: OnFailure
+  backoffLimit: 3
+Admin Scripts:
+
+bash
+
+#!/bin/bash
+# run-migration.sh
+
+# Run database migration as one-off process
+kubectl run migration-$(date +%s) \
+  --image=order-service:latest \
+  --restart=Never \
+  --env="DATABASE_URL=${DATABASE_URL}" \
+  --env="DATABASE_USERNAME=${DATABASE_USERNAME}" \
+  --env="DATABASE_PASSWORD=${DATABASE_PASSWORD}" \
+  --command -- java -jar app.jar --migrate
+
+# Seed database
+kubectl run seed-$(date +%s) \
+  --image=order-service:latest \
+  --restart=Never \
+  --env="DATABASE_URL=${DATABASE_URL}" \
+  --command -- java -jar app.jar --seed
+
+# Data cleanup
+kubectl run cleanup-$(date +%s) \
+  --image=order-service:latest \
+  --restart=Never \
+  --env="DATABASE_URL=${DATABASE_URL}" \
+  --command -- java -jar app.jar --cleanup
+
+
+COMPLETE PROJECT GENERATION TEMPLATE
+When generating a microservice, produce:
+
+1. PROJECT STRUCTURE
+reasonml
+
+order-service/
+├── src/
+│   ├── main/
+│   │   ├── java/com/company/orderservice/
+│   │   │   ├── config/
+│   │   │   │   ├── ApplicationConfig.java          # Factor 3
+│   │   │   │   ├── BackingServicesConfig.java      # Factor 4
+│   │   │   │   ├── ConcurrencyConfig.java          # Factor 8
+│   │   │   │   ├── SecurityConfig.java
+│   │   │   │   └── ShutdownConfig.java             # Factor 9
+│   │   │   ├── controller/
+│   │   │   │   ├── OrderController.java            # Factor 7
+│   │   │   │   └── AdminController.java            # Factor 12
+│   │   │   ├── service/
+│   │   │   │   ├── OrderService.java               # Factor 6
+│   │   │   │   ├── NotificationService.java        # Factor 8
+│   │   │   │   └── AdminService.java               # Factor 12
+│   │   │   ├── repository/
+│   │   │   │   └── OrderRepository.java            # Factor 4
+│   │   │   ├── model/
+│   │   │   │   ├── Order.java
+│   │   │   │   └── OrderItem.java
+│   │   │   ├── dto/
+│   │   │   ├── exception/
+│   │   │   └── OrderServiceApplication.java        # Factor 9
+│   │   └── resources/
+│   │       ├── application.yml                     # Factor 3
+│   │       ├── application-dev.yml                 # Factor 10
+│   │       ├── application-prod.yml                # Factor 10
+│   │       ├── logback-spring.xml                  # Factor 11
+│   │       └── db/migration/                       # Factor 12
+│   │           ├── V1__initial_schema.sql
+│   │           └── V2__add_order_items.sql
+│   └── test/
+│       └── java/com/company/orderservice/
+│           ├── integration/
+│           │   └── OrderServiceIntegrationTest.java # Factor 10
+│           ├── unit/
+│           └── performance/
+├── .github/
+│   └── workflows/
+│       └── ci-cd.yml                               # Factor 5
+├── k8s/
+│   ├── deployment.yml                              # Factor 6, 8
+│   ├── service.yml                                 # Factor 7
+│   ├── hpa.yml                                     # Factor 8
+│   ├── migration-job.yml                           # Factor 12
+│   └── configmap.yml                               # Factor 3
+├── terraform/
+│   ├── main.tf                                     # Factor 10
+│   └── variables.tf
+├── Dockerfile                                      # Factor 5
+├── docker-compose.yml                              # Factor 10
+├── pom.xml                                         # Factor 2
+├── .gitignore                                      # Factor 1
+└── README.md
+2. QUALITY METRICS ACHIEVED
+yaml
+
+code_quality:
+  compilation: "100% first-time success"
+  test_coverage: "98%+"
+  mutation_score: "95%+"
+  sonarqube_rating: "A"
+  cyclomatic_complexity: "< 5"
+  
+performance:
+  p50_latency: "< 50ms"
+  p95_latency: "< 200ms"
+  p99_latency: "< 500ms"
+  throughput: "1000+ RPS per instance"
+  
+security:
+  owasp_vulnerabilities: "0"
+  dependency_vulnerabilities: "0"
+  security_hotspots: "0"
+  
+12_factor_compliance:
+  factor_1_codebase: "✓ Git with proper .gitignore"
+  factor_2_dependencies: "✓ Maven with explicit versions"
+  factor_3_config: "✓ Environment-based configuration"
+  factor_4_backing_services: "✓ Attached PostgreSQL/Redis/Kafka"
+  factor_5_build_release_run: "✓ Multi-stage Docker + CI/CD"
+  factor_6_processes: "✓ Stateless with external state"
+  factor_7_port_binding: "✓ Self-contained on configurable port"
+  factor_8_concurrency: "✓ Async + horizontal scaling"
+  factor_9_disposability: "✓ Fast startup + graceful shutdown"
+  factor_10_dev_prod_parity: "✓ Docker Compose + TestContainers"
+  factor_11_logs: "✓ JSON to stdout"
+  factor_12_admin_processes: "✓ Flyway + admin commands"
+USAGE INSTRUCTIONS
+Standard Generation
+
+Generate a complete Spring Boot microservice for [DOMAIN] with:
+- Service name: [NAME]
+- Database: PostgreSQL
+- Caching: Redis
+- Messaging: Kafka
+- Port: [PORT]
+Custom Factor Emphasis
+
+Generate a Spring Boot microservice emphasizing:
+- Factor 4 (Backing Services): Multi-database support
+- Factor 8 (Concurrency): High-throughput event processing
+- Factor 11 (Logs): Advanced structured logging with tracing
+Domain-Specific Generation
+
+Generate an e-commerce order processing microservice with:
+- 10,000 RPS capacity
+- P99 latency < 100ms
+- PCI-DSS compliance
+- Multi-region deployment
+VALIDATION CHECKLIST
+Before delivering code, verify:
+
+ Compiles without errors or warnings
+ All 12 factors implemented
+ 98%+ test coverage achieved
+ All tests pass (unit, integration, performance)
+ SonarQube quality gate passed
+ No security vulnerabilities
+ Docker image builds successfully
+ Kubernetes manifests valid
+ Documentation complete
+ Performance benchmarks included
