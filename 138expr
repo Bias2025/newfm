@@ -303,3 +303,176 @@ Let's think step by step:
 7. Package as production-ready components
 
 ================================================================================
+
+
+DOMAIN_PARAMETERS:
+  - domain: "[e-commerce|fintech|healthcare|government|logistics|streaming|gaming]"
+  - subdomain: "[citizen-services|legislature|permits|benefits|document-management]"
+  - sector: "[public|private|federal|state|municipal]"
+  
+SCALE_PARAMETERS:
+  - users: "[1K-10K|10K-100K|100K-1M|1M+] concurrent/daily active"
+  - requests_per_second: "[100|1K|5K|10K|50K] RPS"
+  - data_volume: "[GB|TB|PB] per day"
+  - transactions: "[thousands|millions|billions] per period"
+  - budget_scale: "[millions|billions] in currency"
+  
+COMPLIANCE_PARAMETERS:
+  - standards: "[GDPR|HIPAA|PCI-DSS|SOC2|NIST-800-63B|FedRAMP]"
+  - security_levels: "[UNCLASSIFIED|FOUO|SECRET|TOP-SECRET]"
+  - authentication: "[basic|oauth2|oidc|biometric|mfa|totp|sms]"
+  - audit_requirements: "[basic|comprehensive|forensic|real-time]"
+
+
+LATENCY_PARAMETERS:
+  - p50_latency: "<[10|50|100|200]ms"
+  - p99_latency: "<[50|100|500|1000]ms"
+  - calculation_time: "[microseconds|milliseconds|seconds]"
+  - startup_time: "<[1|5|10|30] seconds"
+  
+THROUGHPUT_PARAMETERS:
+  - operations_per_second: "[100|1K|10K|100K]"
+  - concurrent_users: "[100|1K|10K|100K|1M]"
+  - batch_size: "[100|1K|10K|100K] records"
+  - queue_depth: "[100|1K|10K|100K] messages"
+  
+AVAILABILITY_PARAMETERS:
+  - uptime: "[99.9%|99.99%|99.999%]"
+  - rpo: "[1|5|15|60] minutes"  # Recovery Point Objective
+  - rto: "[1|5|15|60] minutes"  # Recovery Time Objective
+  - maintenance_window: "[none|scheduled|rolling]"
+
+PATTERN_PARAMETERS:
+  - architecture: "[microservices|monolith|serverless|hybrid]"
+  - design_pattern: "[hexagonal|clean|event-driven|cqrs|saga|event-sourcing]"
+  - api_style: "[rest|graphql|grpc|websocket|mixed]"
+  - messaging: "[synchronous|asynchronous|event-streaming|pub-sub]"
+  
+INTEGRATION_PARAMETERS:
+  - external_systems: "[payment-gateway|shipping|crm|erp|sharepoint|sap]"
+  - messaging_systems: "[kafka|rabbitmq|sqs|service-bus|pulsar]"
+  - storage_systems: "[s3|gcs|azure-blob|minio|local]"
+  - search_systems: "[elasticsearch|solr|postgresql-fts|opensearch]"
+
+POSTGRESQL_PARAMETERS:
+  - version: "[13|14|15|16]"
+  - features: "[jsonb|ctes|window-functions|gin-indexes|tsvector|temporal-tables]"
+  - optimization: "[materialized-views|partitioning|parallel-queries|columnar-storage]"
+  - replication: "[none|master-slave|multi-master|logical]"
+  
+QUERY_OPTIMIZATION_PARAMETERS:
+  - index_types: "[btree|gin|gist|hash|brin|partial]"
+  - join_strategies: "[nested-loop|hash|merge|lateral]"
+  - fetch_strategies: "[eager|lazy|batch|subselect]"
+  - cache_strategies: "[l1|l2|query|result]"
+
+TEST_COVERAGE_PARAMETERS:
+  - minimum_coverage: "[80%|90%|95%|98%|99%]"
+  - mutation_score: "[80%|85%|90%|95%]"
+  - test_types: "[unit|integration|e2e|performance|security|contract|bdd]"
+  
+TEST_FRAMEWORK_PARAMETERS:
+  - unit_testing: "[junit5|testng|spock]"
+  - mocking: "[mockito|easymock|powermock]"
+  - integration: "[testcontainers|embedded|docker-compose]"
+  - bdd: "[cucumber|jbehave|serenity]"
+  - performance: "[jmeter|gatling|k6|locust]"
+
+AUTHENTICATION_PARAMETERS:
+  - method: "[basic|bearer|oauth2|saml|mtls|api-key]"
+  - mfa_type: "[totp|sms|email|biometric|hardware-token]"
+  - session_storage: "[jwt|redis|database|stateless]"
+  - token_rotation: "[enabled|disabled|refresh-token|sliding-window]"
+  
+AUTHORIZATION_PARAMETERS:
+  - model: "[rbac|abac|pbac|zero-trust]"
+  - granularity: "[coarse|fine|attribute-based|dynamic]"
+  - policy_engine: "[spring-security|opa|casbin|custom]"
+
+CONTAINER_PARAMETERS:
+  - platform: "[kubernetes|ecs|gke|aks|openshift]"
+  - registry: "[dockerhub|ecr|gcr|acr|harbor]"
+  - orchestration: "[docker-compose|kubernetes|swarm|nomad]"
+  
+SCALING_PARAMETERS:
+  - strategy: "[horizontal|vertical|auto|manual]"
+  - metrics: "[cpu|memory|custom|request-rate]"
+  - min_replicas: "[1|2|3|5|10]"
+  - max_replicas: "[10|50|100|500|1000]"
+
+ENTITY_PARAMETERS:
+  - name: "[Product|Order|User|Document|Bill|Permit|Benefit]"
+  - versioning: "[none|optimistic|pessimistic|event-sourced]"
+  - audit: "[none|basic|comprehensive|blockchain]"
+  - relationships: "[one-to-many|many-to-many|graph|hierarchical]"
+  
+OPERATION_PARAMETERS:
+  - crud_operations: "[create|read|update|delete|bulk|search]"
+  - special_operations: "[approve|reject|archive|version|publish]"
+  - workflow_stages: "[1-50] approval stages"
+  - batch_operations: "[import|export|transform|validate]"
+
+PERFORMANCE_OPTIMIZATION:
+  - target_improvement: "[2x|5x|10x|50x] baseline"
+  - optimization_level: "[standard|enhanced|superhuman]"
+  - cache_layers: "[1|2|3|multi-tier]"
+  - parallel_processing: "[threads|virtual-threads|reactive|actor-model]"
+  
+MEMORY_OPTIMIZATION:
+  - heap_size: "[256MB|512MB|1GB|2GB|4GB|8GB]"
+  - gc_strategy: "[g1|zgc|shenandoah|epsilon]"
+  - object_pooling: "[enabled|disabled|adaptive]"
+
+OBSERVABILITY_PARAMETERS:
+  - metrics: "[prometheus|datadog|cloudwatch|new-relic]"
+  - logging: "[elk|splunk|cloudwatch|graylog]"
+  - tracing: "[jaeger|zipkin|x-ray|datadog-apm]"
+  - alerting: "[pagerduty|opsgenie|slack|email]"
+  
+LOG_PARAMETERS:
+  - format: "[json|plain|structured|custom]"
+  - level: "[trace|debug|info|warn|error]"
+  - correlation: "[trace-id|session-id|request-id|all]"
+
+ADVANCED_FEATURES:
+  - event_streaming: "[kafka|kinesis|pulsar|rabbitmq-streams]"
+  - search_capabilities: "[full-text|faceted|geo-spatial|ml-enhanced]"
+  - ai_integration: "[nlp|computer-vision|predictive|recommendation]"
+  - blockchain: "[audit-trail|smart-contracts|distributed-ledger]"
+  
+COMMUNICATION_PARAMETERS:
+  - channels: "[email|sms|push|in-app|webhook]"
+  - languages: "[en|es|fr|de|zh|ar|multi]"
+  - templates: "[static|dynamic|personalized|a-b-tested]"
+  - delivery: "[immediate|scheduled|batch|priority-queue]"
+
+PROCESS_PARAMETERS:
+  - workflow_engine: "[camunda|activiti|temporal|custom]"
+  - approval_stages: "[sequential|parallel|conditional|dynamic]"
+  - rules_engine: "[drools|easy-rules|spring-rules|custom]"
+  - state_machine: "[spring-statemachine|squirrel|custom]"
+  
+BATCH_PARAMETERS:
+  - framework: "[spring-batch|apache-spark|custom]"
+  - chunk_size: "[100|1000|10000|dynamic]"
+  - retry_policy: "[fixed|exponential|custom]"
+  - error_handling: "[skip|retry|fail|compensate]"
+
+# Dynamic parameter injection
+@SPRING-FORGE generate \
+  --domain="government" \
+  --scale="500K-users" \
+  --compliance="NIST-800-63B" \
+  --latency="<100ms" \
+  --architecture="event-driven" \
+  --database-features="jsonb,ctes,gin-indexes" \
+  --test-coverage="98%" \
+  --optimization="superhuman"
+
+# Entity-specific generation
+@SPRING-FORGE generate-entity \
+  --name="GovernmentDocument" \
+  --versioning="optimistic" \
+  --classification="UNCLASSIFIED|FOUO|SECRET" \
+  --storage="s3" \
+  --search="postgresql-fts"
