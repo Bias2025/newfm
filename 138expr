@@ -1,0 +1,305 @@
+================================================================================
+SPRING-FORGE ELITE 12-FACTOR MICROSERVICES GENERATOR
+================================================================================
+
+USAGE: @SPRING-FORGE generate --factors=(1,2,3,4,5,6,7,8,9,10,11,12) [options]
+      OR: @SPRING-FORGE generate --factors=(ANY_COMBINATION) [options]
+      OR: @SPRING-FORGE generate --all-factors [options]
+
+================================================================================
+CRAFT-T METHODOLOGY CONFIGURATION
+================================================================================
+
+CONTEXT:
+  domain: "[REQUIRED: e-commerce|fintech|healthcare|logistics|streaming|gaming]"
+  scale:
+    users: "[NUMBER] concurrent users"
+    requests_per_second: "[NUMBER] RPS"
+    latency_p99: "<[NUMBER]ms"
+    data_volume: "[NUMBER]GB/day"
+  constraints:
+    regulatory: "[GDPR|HIPAA|PCI-DSS|SOC2|NONE]"
+    technical: "[cloud-native|on-premise|hybrid]"
+    business: "[startup|enterprise|government]"
+  team:
+    size: "[NUMBER] developers"
+    expertise: "[junior|senior|mixed]"
+    location: "[distributed|colocated]"
+  integrations:
+    external_apis: "[LIST: payment_gateway, shipping, analytics]"
+    internal_services: "[LIST: user-service, inventory-service]"
+    databases: "[PostgreSQL|MongoDB|DynamoDB|Multi-DB]"
+
+REQUIREMENTS:
+  functional:
+    - "[CORE_CAPABILITY_1: e.g., process orders]"
+    - "[CORE_CAPABILITY_2: e.g., manage inventory]"
+    - "[CORE_CAPABILITY_3: e.g., handle payments]"
+  non_functional:
+    availability: "[99.9%|99.99%|99.999%]"
+    rpo: "[NUMBER] minutes"  # Recovery Point Objective
+    rto: "[NUMBER] minutes"  # Recovery Time Objective
+    throughput: "[NUMBER] transactions/second"
+    storage: "[NUMBER]TB capacity"
+  performance:
+    response_time_p50: "<[NUMBER]ms"
+    response_time_p99: "<[NUMBER]ms"
+    concurrent_users: "[NUMBER]"
+    peak_load_multiplier: "[NUMBER]x"
+
+ARCHITECTURE:
+  pattern: "[Hexagonal|Clean|Event-Driven|CQRS|Saga]"
+  style: "[Microservices|Modular-Monolith|Serverless]"
+  layers:
+    presentation: "[REST|GraphQL|gRPC|WebSocket]"
+    application: "[Spring MVC|WebFlux|Native]"
+    domain: "[DDD|Transaction-Script|Active-Record]"
+    infrastructure: "[JPA|MyBatis|JDBC-Template]"
+
+FRAMEWORK:
+  runtime:
+    java: "17|21"
+    spring_boot: "3.2.x"
+    build_tool: "[Maven|Gradle]"
+  database:
+    primary: "PostgreSQL 15+"
+    features: "[JSONB|CTEs|Partitioning|Full-Text]"
+  caching:
+    provider: "[Redis|Hazelcast|Caffeine]"
+    strategy: "[Write-Through|Write-Behind|Refresh-Ahead]"
+  messaging:
+    broker: "[Kafka|RabbitMQ|AWS-SQS]"
+    pattern: "[Pub-Sub|Point-to-Point|Request-Reply]"
+
+TECHNOLOGY:
+  deployment:
+    platform: "[Kubernetes|ECS|Cloud-Run|Lambda]"
+    registry: "[DockerHub|ECR|GCR|ACR]"
+  observability:
+    metrics: "[Prometheus|CloudWatch|Datadog]"
+    logging: "[ELK|Splunk|CloudWatch]"
+    tracing: "[Jaeger|Zipkin|X-Ray]"
+  cicd:
+    pipeline: "[GitHub-Actions|GitLab-CI|Jenkins]"
+    quality_gates: "[SonarQube|Checkmarx|Snyk]"
+
+TESTING:
+  coverage_target: "98%"
+  test_types:
+    unit: "JUnit5 + Mockito"
+    integration: "TestContainers + RestAssured"
+    performance: "Gatling|JMeter"
+    security: "OWASP-ZAP|Burp"
+    mutation: "PITest (95% score)"
+  validation:
+    contract: "Spring Cloud Contract"
+    chaos: "Chaos Monkey"
+    load: "K6|Locust"
+
+PERSONA:
+  expertise_level: "Principal Engineer"
+  years_experience: "15+"
+  specialization: "[Cloud-Native|Security|Performance|Data]"
+  certifications: "[AWS-Pro|CKA|Spring-Professional]"
+
+ORIGINALITY:
+  innovations:
+    - "[UNIQUE_ASPECT_1: e.g., ML-based auto-scaling]"
+    - "[UNIQUE_ASPECT_2: e.g., Zero-trust security model]"
+    - "[UNIQUE_ASPECT_3: e.g., Event-sourcing with CQRS]"
+
+================================================================================
+12-FACTOR IMPLEMENTATION SELECTOR
+================================================================================
+
+SELECT FACTORS TO IMPLEMENT: (1,2,3,4,5,6,7,8,9,10,11,12)
+
+[1] CODEBASE - Single version-controlled repository
+    └─ Options:
+       - repository_type: [monorepo|polyrepo]
+       - vcs: [git|mercurial]
+       - branching_strategy: [gitflow|github-flow|trunk-based]
+       - versioning: [semantic|calendar|custom]
+
+[2] DEPENDENCIES - Explicit declaration and isolation
+    └─ Options:
+       - dependency_management: [maven-bom|gradle-platform]
+       - vulnerability_scanning: [enabled|disabled]
+       - update_strategy: [aggressive|conservative]
+       - private_registry: [nexus|artifactory|github-packages]
+
+[3] CONFIG - Store configuration in environment
+    └─ Options:
+       - config_source: [env-vars|configmap|secrets|vault]
+       - hot_reload: [enabled|disabled]
+       - encryption: [at-rest|in-transit|both]
+       - validation: [startup|runtime|both]
+
+[4] BACKING_SERVICES - Treat as attached resources
+    └─ Options:
+       - discovery: [dns|consul|eureka|kubernetes]
+       - circuit_breaker: [resilience4j|hystrix|custom]
+       - connection_pooling: [hikari|c3p0|tomcat]
+       - retry_policy: [exponential|linear|custom]
+
+[5] BUILD_RELEASE_RUN - Strictly separate stages
+    └─ Options:
+       - build: [docker|buildpacks|jib]
+       - release: [semantic|timestamp|git-sha]
+       - deployment: [blue-green|canary|rolling]
+       - rollback: [automatic|manual|both]
+
+[6] PROCESSES - Execute as stateless processes
+    └─ Options:
+       - session_storage: [redis|database|jwt]
+       - file_storage: [s3|gcs|azure-blob]
+       - state_management: [external|none]
+       - clustering: [kubernetes|swarm|ecs]
+
+[7] PORT_BINDING - Export services via port binding
+    └─ Options:
+       - server: [tomcat|netty|undertow|jetty]
+       - protocol: [http|https|grpc|websocket]
+       - port_configuration: [dynamic|static]
+       - health_endpoints: [actuator|custom]
+
+[8] CONCURRENCY - Scale via process model
+    └─ Options:
+       - scaling: [horizontal|vertical|both]
+       - autoscaling: [cpu|memory|custom-metrics]
+       - threading: [virtual|platform|reactive]
+       - backpressure: [enabled|disabled]
+
+[9] DISPOSABILITY - Fast startup and graceful shutdown
+    └─ Options:
+       - startup_optimization: [lazy|eager|native]
+       - shutdown_timeout: "[NUMBER]seconds"
+       - graceful_shutdown: [enabled|disabled]
+       - pre_stop_hooks: [enabled|disabled]
+
+[10] DEV_PROD_PARITY - Keep environments similar
+     └─ Options:
+        - containerization: [docker|podman]
+        - local_testing: [testcontainers|docker-compose]
+        - feature_flags: [enabled|disabled]
+        - environment_promotion: [automatic|manual]
+
+[11] LOGS - Treat as event streams
+     └─ Options:
+        - format: [json|logfmt|plain]
+        - output: [stdout|file|both]
+        - aggregation: [elk|splunk|cloudwatch]
+        - correlation: [trace-id|session-id|both]
+
+[12] ADMIN_PROCESSES - Run as one-off processes
+     └─ Options:
+        - runner: [spring-cli|kubernetes-job|lambda]
+        - migrations: [flyway|liquibase|custom]
+        - scheduling: [cron|quartz|kubernetes-cronjob]
+        - audit: [enabled|disabled]
+
+================================================================================
+EXECUTION COMMANDS
+================================================================================
+
+# GENERATE ALL 12 FACTORS:
+@SPRING-FORGE generate --all-factors \
+  --service-name="[SERVICE_NAME]" \
+  --package="com.company.service" \
+  --output="./generated"
+
+# GENERATE SPECIFIC FACTORS (Examples):
+@SPRING-FORGE generate --factors=(1,3,6) \  # Codebase, Config, Processes
+  --service-name="order-service"
+
+@SPRING-FORGE generate --factors=(2,4,7,11) \  # Dependencies, Backing, Port, Logs
+  --service-name="payment-service"
+
+@SPRING-FORGE generate --factors=(5,8,9,10) \  # Build, Concurrency, Disposability, Parity
+  --service-name="inventory-service"
+
+# VALIDATE EXISTING SERVICE:
+@SPRING-FORGE validate --factors=(1,2,3,4,5,6,7,8,9,10,11,12) \
+  --path="./existing-service" \
+  --fix-violations=true
+
+# OPTIMIZE SPECIFIC FACTORS:
+@SPRING-FORGE optimize --factors=(6,8,9) \  # Optimize statelessness, concurrency, startup
+  --path="./service" \
+  --target-performance="SUPERHUMAN"
+
+================================================================================
+OUTPUT STRUCTURE
+================================================================================
+
+generated/
+├── Factor_[N]_Implementation/
+│   ├── src/
+│   │   ├── main/java/
+│   │   ├── main/resources/
+│   │   └── test/java/  # 98% coverage per factor
+│   ├── config/
+│   │   ├── application-[factor].yml
+│   │   └── [factor]-specific-configs/
+│   ├── docker/
+│   │   └── Dockerfile.[factor]
+│   ├── k8s/
+│   │   └── [factor]-manifests.yaml
+│   └── docs/
+│       ├── [factor]-architecture.md
+│       ├── [factor]-runbook.md
+│       └── [factor]-tests.md
+├── integration/
+│   ├── combined-factors-config.yml
+│   ├── docker-compose.yml
+│   └── integration-tests/
+├── performance/
+│   ├── benchmarks/
+│   ├── load-tests/
+│   └── results/
+└── validation/
+    ├── 12-factor-compliance-report.html
+    ├── test-coverage-report.html
+    └── performance-metrics.json
+
+================================================================================
+QUALITY METRICS (Per Factor)
+================================================================================
+
+Factor_Implementation_Quality:
+  compilation: "First-time success"
+  test_coverage: "≥98%"
+  performance: "Exceeds requirements by 50%+"
+  security: "Zero vulnerabilities"
+  complexity: "< 5 cyclomatic"
+  documentation: "Complete with examples"
+  integration: "Seamless with other factors"
+
+================================================================================
+ADVANCED OPTIONS
+================================================================================
+
+--optimize=[STANDARD|ENHANCED|SUPERHUMAN]
+--coverage=[90|95|98|99]
+--performance-target=[BASELINE|2X|5X|10X]
+--security-level=[BASIC|ENHANCED|PARANOID]
+--monitoring=[BASIC|DETAILED|COMPREHENSIVE]
+--documentation=[MINIMAL|STANDARD|EXTENSIVE]
+--test-types=[UNIT|INTEGRATION|PERFORMANCE|SECURITY|ALL]
+--deployment-target=[LOCAL|STAGING|PRODUCTION]
+--compliance=[NONE|GDPR|HIPAA|PCI-DSS|SOC2]
+
+================================================================================
+CHAIN-OF-THOUGHT EXECUTION
+================================================================================
+
+Let's think step by step:
+1. Parse selected factors from --factors=(N,N,N) parameter
+2. Apply CRAFT-T methodology to each selected factor
+3. Generate implementation with 98% test coverage
+4. Optimize for superhuman performance
+5. Validate against 12-factor principles
+6. Generate comprehensive documentation
+7. Package as production-ready components
+
+================================================================================
