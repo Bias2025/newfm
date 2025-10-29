@@ -1,0 +1,15 @@
+rai
+
+
+python3 lakera-project-key.py --datasets  PromptINJECTION_consolidated.csv   --env 6ae3a462e055ecbc24142715ec7365f1ffc2c430054a7ec18f138ec8097ac73c --project-id project-1615761992  --text-column prompt --label-column ground_truth_binary
+
+  
+	python3  lakera-project-key.py --datasets wildjailbreak.csv  --env c84a36972aa7d24edb0345852dfe917786386e612d86bd2cb7c098fee23f9da9 --project-id project-1615761992 --text-column prompt --label-column label
+
+
+pijb
+
+python3 lakera-project-key.py --datasets  PromptINJECTION_consolidated.csv   --env 6ae3a462e055ecbc24142715ec7365f1ffc2c430054a7ec18f138ec8097ac73c --project-id project-9310880281  --text-column prompt --label-column ground_truth_binary
+
+  
+	python3  lakera-project-key.py --datasets wildjailbreak.csv  --env c84a36972aa7d24edb0345852dfe917786386e612d86bd2cb7c098fee23f9da9 --project-id project-9310880281 --text-column prompt --label-column label
